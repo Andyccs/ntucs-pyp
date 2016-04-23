@@ -81,7 +81,7 @@
 
 \noindent \textbf{Question 1d} Give an instantiation of MapReduce function schema for bi-word index construction. Use an example to illustrate your answer.
 
-\noindent Not in syllabus
+\noindent Not in syllabus\\
 
 \noindent \textbf{Question 1e} In a large collection of 100,000,000,000 Web pages, you find that there are 5,000 distinct terms in the first 10,000 tokens and 50,000 distinct terms in the first 1,000,000 tokens. If each Web page has 1,000 tokens on average, what is the size of the vocabulary of the index for this collection as predicted by Heap's law?
 
@@ -100,6 +100,124 @@ $$50000=k(1000000)^b$$
 \end{equation*}
 
 \noindent When $T=10^{11} \times 10^3$, $M=500 \times 10^6$
+
+\section{Question 2}
+
+\noindent \textbf{Question 2a} Explain the following concepts with examples:\\
+
+\noindent \textbf{(i)} Length normalization: A vector can be normalized by dividing each of its components by its length. Dividing a vector by its $L_2$ norm makes it a unit vector. Long and short documents now have comparable weights. Let say we have a document vector $\vec{d} = [1,1,0]$. We normalize the vector by using the following formula:
+
+$$\vec{d_{\text{norm}}} = \frac{\vec{d}}{|\vec{d}|}$$
+
+\noindent norm of $\vec{d} = \sqrt{2}$, hence $vec{d} = [0.707, 0.707, 0]$ \\
+
+\noindent \textbf{(ii)} Lossy compression: in lossy compression, the lost information after compression cannot be recovered. Several of the preprocessing steps can be viewed as lossy compression, such as case folding, stopwords, stemming, number elimination. \\
+
+\noindent \textbf{(iii)} XPath: (not in syllabus) XPath is a syntax for defining parts of an XML document. XPath uses path expressions to navigate in XML documents. \\
+
+\noindent \textbf{Question 2b} Illustrate the dictionary with the following terms, which is compressed by the techniques of dictionary-as-a-string and front coding, where the block size is 4:
+\begin{center}
+\verb|abcd,abel,able,abolish,|
+\verb|bore,bored,bores,boring|
+\end{center}
+
+\noindent Answer:
+
+\noindent \verb|4abcd4abel4able7abolish4bor*e2|$\diamond$\verb|ed2|$\diamond$\verb|es3|$\diamond$\verb|ing|
+\noindent \verb|a                      b|
+
+\begin{center}
+\begin{tabular}{ | l | l | l |} 
+    \hline
+    Frequency & Posting pointer & Term pointer \\
+    \hline
+    1 & & a \\
+    1 & & \\
+    1 & & \\
+    1 & & \\
+    1 & & b \\
+    1 & & \\
+    1 & & \\
+    1 & & \\
+    \hline
+\end{tabular}
+\end{center}
+
+\noindent \textbf{Question 2c} Give BOTH Variable Byte codes and Gamma codes for the following numbers: (i) 130 (ii) 45
+
+\noindent Not in syllabus\\
+
+\noindent \textbf{Question 2d} Consider the following collection of documents:
+\begin{center}
+Doc1: \verb|my love love star|\\
+Doc2: \verb|I love star much|\\
+Doc3: \verb|my star is your start|
+\end{center}
+
+\noindent Calculate the cosine similarity between documents in the collection, based on TF-IDF weighting, and select the closest pair.
+
+\noindent Answer: before TF-IDF
+\begin{center}
+\begin{tabular}{ | l | l l l |l|} 
+    \hline
+    Term   & Doc1 & Doc2 & Doc3 & df \\
+    \hline
+    I      & 0    & 1    & 0    & 1  \\
+    is     & 0    & 0    & 1    & 1  \\
+    love   & 2    & 1    & 0    & 2  \\
+    much   & 0    & 1    & 0    & 1  \\
+    my     & 1    & 0    & 1    & 2  \\
+    star   & 1    & 1    & 1    & 3  \\
+    start  & 0    & 0    & 1    & 1  \\
+    your   & 0    & 0    & 1    & 1  \\
+    \hline
+\end{tabular}
+\end{center}
+
+\noindent After TF-IDF:
+\begin{center}
+\begin{tabular}{ | l | l l l |l|} 
+    \hline
+    Term   & Doc1 & Doc2 & Doc3 & idf   \\
+    \hline
+    I      &0     &0.477 &0     & 0.477 \\
+    is     &0     &0     &0.477 & 0.477 \\
+    love   &0.229 &0.477 &0     & 0.176 \\
+    much   &0     &0.477 &0     & 0.477 \\
+    my     &0.176 &0     &0.176 & 0.176 \\
+    star   &0     &0     &0     & 0     \\
+    start  &0     &0     &0.477 & 0.477 \\
+    your   &0     &0     &0.477 & 0.477 \\
+    \hline
+\end{tabular}
+\end{center}
+
+\noindent After normalization:
+\noindent After TF-IDF:
+\begin{center}
+\begin{tabular}{ | l | l l l |l|} 
+    \hline
+    Term   & Doc1 & Doc2 & Doc3 \\
+    \hline
+    I      &0     &0.577 &0     \\
+    is     &0     &0     &0.564 \\
+    love   &0.792 &0.577 &0     \\
+    much   &0     &0.577 &0     \\
+    my     &0.609 &0     &0.208 \\
+    star   &0     &0     &0     \\
+    start  &0     &0     &0.564 \\
+    your   &0     &0     &0.564 \\
+    \hline
+    length &0.289 &0.826 &0.845 \\
+    \hline
+\end{tabular}
+\end{center}
+
+$$\text{cosine}(\text{doc1},\text{doc2})=0.792 \times 0.577 = 0.457$$
+$$\text{cosine}(\text{doc1},\text{doc3})=0.609 \times 0.208 = 0.127$$
+$$\text{cosine}(\text{doc2},\text{doc3})=0$$
+
+\noindent Doc1 and Doc2 are the closest
 
 \end{multicols*}
 \end{document}
