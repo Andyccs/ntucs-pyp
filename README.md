@@ -33,5 +33,6 @@ $ npm install -g watch-cli
 Then you start watching for changes:
 
 ```Shell
-$ make watch
+# change the filename to the file you want
+$ watch -p "*.tex" -c "pdflatex -shell-escape -halt-on-error -interaction=nonstopmode cz4034-13-14-2.tex"
 ```

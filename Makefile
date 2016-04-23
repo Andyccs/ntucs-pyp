@@ -15,6 +15,3 @@ clean-pdf:
 	rm cz4034-14-15-2.pdf
 
 clean-all: clean clean-pdf
-
-watch:
-	watch -p "*.tex" -c "make build-once"

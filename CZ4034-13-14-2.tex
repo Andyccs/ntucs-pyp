@@ -1,0 +1,105 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{geometry}
+\geometry{
+    left=2cm,
+    right=0.64cm,
+    top=0.64cm,
+    bottom=2cm
+}
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+\graphicspath{ {images/} }
+
+\begin{document}
+
+\chapter{Semester 2 Examination 2013-2014\\CZ4034 Information Retrieval}
+
+\begin{multicols*}{2}
+
+\section{Question 1}
+
+\noindent \textbf{Question 1a} \\
+
+\noindent \textbf{(i)} Define ``Document frequency''
+
+\noindent Answer: document frequency is number of times a term occurs in a collection of documents. Rare term has low document frequency, and is more informative than frequent terms.\\
+
+\noindent \textbf{(ii)} Explain why an inverted index includes document frequencies.
+
+\noindent Answer: In boolean retrieval, we retrieve results by performing boolean operation on posting lists. By knowing the document frequency, we can optimise boolean queries by processing AND operation in order of increasing document frequency.\\
+
+\noindent \textbf{(iii)} Recommend the most plausible processing order for the Boolean query ``(blue OR sky) AND (red OR apple) AND (yellow OR pages)'', based on the following document frequencies:
+
+\begin{center}
+\begin{tabular}{ | l | l |} 
+    \hline
+    Term  & Document Frequency\\
+    \hline
+    blue  & 32874 \\
+    sky   & 234 \\
+    red   & 25143 \\
+    apple & 324 \\
+    yellow& 64563 \\
+    pages & 463 \\
+    \hline
+\end{tabular}
+\end{center}
+
+\noindent Maximum number of document for:
+\begin{itemize}
+    \item (blue OR sky) = 33108
+    \item (red OR apple) = 25467
+    \item (yellow OR pages) = 65026
+\end{itemize}
+
+\noindent We do AND operation for (red OR apple) and (blue OR sky) first, then do AND operation for (yellow OR pages)\\
+
+\noindent \textbf{Question 1b} Explain why IR systems typically do not remove stop words from their indexes. 
+
+\noindent By having good compression techniques, the spaces that are required to store stop words are very small. In addition, by having good query optimization techniques, we only need to pay a little performance trade-off to include stop words. Furthermore, we need stop words for phrase query (e.g. King of Denmark) and relational query (e.g. flight to London). \\
+
+\noindent \textbf{Question 1c} Compute the edit distance between ``SCE'' and ``CEE'' by using the dynamic programming algorithm of Levenshtein distance. 
+
+\begin{center}
+\begin{tabular}{ | l | l  l  l  l  |} 
+    \hline
+      &   & C & E & E \\
+    \hline
+      & 0 & 1 & 2 & 3 \\
+    S & 1 & 1 & 2 & 3 \\
+    C & 2 & 1 & 2 & 3 \\
+    E & 3 & 2 & 1 & \textbf{2} \\
+    \hline
+\end{tabular}
+\end{center}
+
+\noindent \textbf{Question 1d} Give an instantiation of MapReduce function schema for bi-word index construction. Use an example to illustrate your answer.
+
+\noindent Not in syllabus
+
+\noindent \textbf{Question 1e} In a large collection of 100,000,000,000 Web pages, you find that there are 5,000 distinct terms in the first 10,000 tokens and 50,000 distinct terms in the first 1,000,000 tokens. If each Web page has 1,000 tokens on average, what is the size of the vocabulary of the index for this collection as predicted by Heap's law?
+
+$$M=kT^b$$
+$$5000=k(10000)^b$$
+$$50000=k(1000000)^b$$
+
+\begin{equation*}
+\begin{split}
+    \frac{5000}{(10000)^b}1000000^b &= 50000 \\
+    10^{-4b}\cdot 10^{6b} &= 10 \\
+    10^{2b} &= 10\\
+    b &= 0.5\\
+    k &= 50
+\end{split}
+\end{equation*}
+
+\noindent When $T=10^{11} \times 10^3$, $M=500 \times 10^6$
+
+\end{multicols*}
+\end{document}
