@@ -25,7 +25,7 @@
 \section{Question 1}
 \noindent \textbf{Question 1a} Explain the following concepts with examples
 
-\noindent \textbf{(i)} Posting list: it is a list of document IDs that contain a specific dictionary term, and is used in inverted index. The posting list needs to be a variable size list so that new documents can be added easily to the list. 
+\noindent \textbf{(i)} Posting list: It is a list of document IDs that contain a specific dictionary term, and is used in inverted index. The posting list needs to be a variable size list so that new documents can be added easily to the list. 
 
 \begin{center}
 \begin{tikzpicture}[
@@ -44,7 +44,7 @@ roundnode/.style={circle, draw=black, thin},
 \end{tikzpicture}
 \end{center}
 
-\noindent \textbf{(ii)} Biword index: we use two consecutive words as dictionary pharases, instead of using unigram which treat each words as dictionary terms. For example, if we have the following sentence:
+\noindent \textbf{(ii)} Biword index: We use two consecutive words as dictionary pharases, instead of using unigram which treat each words as dictionary terms. For example, if we have the following sentence:
 \begin{center}
 \verb|I am a boy|
 \end{center}
@@ -113,6 +113,8 @@ roundnode/.style={circle, draw=black, thin},
 \end{tabular}
 \end{center}
 
+\noindent Since front coding is only applied for words with long common prefix, it does not apply in this case.\\
+
 \noindent \textbf{Question 1e} Give the range of numbers whose gamma codes have exactly nine bits
 
 \noindent Not in syllabus \\
@@ -144,7 +146,7 @@ Doc2: \verb|google apple apple facebook|\\
     \hline
     (n) $\text{tf}_{t,d}$ & (n) $1$ & (n) $1$ \\
     (l) $1 + log(\text{tf}_{t,d})$ & (t) $log \frac{N}{\text{df}_t}$ & (c) $\frac{1}{\sqrt{w_1^ + w_2^2 + \ldots + w_M^2}}$ \\
-    (a) $0.5 + \frac{00.5 \times \text{tf}_{t,d}}{\max_t (\text{tf}_{t,d})}$ & & \\
+    (a) $0.5 + \frac{0.5 \times \text{tf}_{t,d}}{\max_t (\text{tf}_{t,d})}$ & & \\
     \hline
 \end{tabular}
 \end{center}
@@ -342,7 +344,7 @@ $$P(\text{SQ} | \text{card}) = \frac{P(\text{card} | \text{SQ}) P(\text{SQ})}{P(
 
 \noindent \textbf{(i)} Maximizing the accuracy of a classification model on a training dataset may lead to overfitting. TRUE.\\
 
-\noindent \textbf{(ii)} Naive Bayes classifiers assume that the effect of a variable calue on a giveng class is independent of the values of other variables. TRUE.\\
+\noindent \textbf{(ii)} Naive Bayes classifiers assume that the effect of a variable value on a giveng class is independent of the values of other variables. TRUE.\\
 
 \noindent \textbf{(iii)} As kNN give locally defined decision boundaries between classes, far away points do not influence each classificaiton decision. FALSE.\\
 
@@ -407,7 +409,7 @@ $$P(\text{europe} \cap \text{male}) = \frac{15}{200}\cdot \frac{120}{200}=0.045$
 
 \noindent \textbf{(iii)} Your mentor now wants to employ hierarchical clustering. He thinks a top-down approach would suit the problem better. Which clustering technique would you recommend to him? Explain why. 
 
-\noindent Answer: To use top-down approach, we would split a group of students into two groups, then to four groups and so on until we satisfy. I would recommend him to use a bottom-up approach instead because that's the way human normal will do. 
+\noindent Answer: To use top-down approach, we would split a group of students into two groups, then to four groups and so on until we satisfy. I would recommend him to use a bottom-up approach instead because that's the way human normally will do. 
 
 \end{multicols*}
 \end{document}
