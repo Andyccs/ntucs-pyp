@@ -174,5 +174,189 @@ $$\text{MAP} = \frac{1}{4} \cdot (\frac{1}{2} + \frac{2}{5} + \frac{3}{6} + \fra
 
 \noindent Not in syllabus
 
+\section{Question 3}
+
+\noindent \textbf{Question 3a} Consider the seven restaurant reviews in table below, where the reviews are classified into two classes (i.e. positive, negative).
+
+\begin{center}
+\begin{tabular}{| l | p{5cm} | l |}
+    \hline
+    ID  & Review & Sentiment \\ \hline
+    1   & nice food nice service & Positive \\
+    2   & food is good as expected & Positive \\
+    3   & can not wait to go back & Positive \\
+    4   & must try & Positive \\
+    5   & food is nice but not as good as expected & Negative \\
+    6   & do not wnat to go back & Negative \\
+    7   & do not want to wait long & Negative \\
+    \hline
+\end{tabular}
+\end{center}
+
+\noindent \textbf{(i)} Build a multinomial Naive Bayes classifier with the reviews in the table. You may use words as features. 
+
+\noindent Answer: The number of vocabulary is 19, i.e. \verb|as|, \verb|back|, \verb|but|, \verb|can|, \verb|do|, \verb|expected|, \verb|food|, \verb|go|, \verb|good|, \verb|is|, \verb|long|, \verb|must|, \verb|nice|, \verb|not|, \verb|service|, \verb|to|, \verb|try|, \verb|wait|, \verb|want|. 
+
+$$ P(\text{as} | \text{Postive} ) = \frac{1+ 1}{17 + 19} = \frac{2}{36}$$
+$$ P(\text{back} | \text{Postive} ) = \frac{1+ 1}{17 + 19} = \frac{2}{36}$$
+$$ P(\text{but} | \text{Postive} ) = \frac{0+ 1}{17 + 19} = \frac{1}{36}$$
+$$ P(\text{can} | \text{Postive} ) = \frac{1+ 1}{17 + 19} = \frac{2}{36}$$
+$$ P(\text{do} | \text{Postive} ) = \frac{0+ 1}{17 + 19} = \frac{1}{36}$$
+$$ P(\text{expected} | \text{Postive} ) = \frac{1+ 1}{17 + 19} = \frac{2}{36}$$
+$$ P(\text{food} | \text{Postive} ) = \frac{2+ 1}{17 + 19} = \frac{3}{36}$$
+$$ P(\text{go} | \text{Postive} ) = \frac{1+ 1}{17 + 19} = \frac{2}{36}$$
+$$ P(\text{good} | \text{Postive} ) = \frac{1+ 1}{17 + 19} = \frac{2}{36}$$
+$$ P(\text{is} | \text{Postive} ) = \frac{1+ 1}{17 + 19} = \frac{2}{36}$$
+$$ P(\text{long} | \text{Postive} ) = \frac{0+ 1}{17 + 19} = \frac{1}{36}$$
+$$ P(\text{must} | \text{Postive} ) = \frac{1+ 1}{17 + 19} = \frac{2}{36}$$
+$$ P(\text{nice} | \text{Postive} ) = \frac{2+ 1}{17 + 19} = \frac{3}{36}$$
+$$ P(\text{not} | \text{Postive} ) = \frac{1+ 1}{17 + 19} = \frac{2}{36}$$
+$$ P(\text{service} | \text{Postive} ) = \frac{1+ 1}{17 + 19} = \frac{2}{36}$$
+$$ P(\text{to} | \text{Postive} ) = \frac{1+ 1}{17 + 19} = \frac{2}{36}$$
+$$ P(\text{try} | \text{Postive} ) = \frac{1+ 1}{17 + 19} = \frac{2}{36}$$
+$$ P(\text{wait} | \text{Postive} ) = \frac{1+ 1}{17 + 19} = \frac{2}{36}$$
+$$ P(\text{want} | \text{Postive} ) = \frac{0+ 1}{17 + 19} = \frac{1}{36}$$
+
+$$ P(\text{as} | \text{Negative} ) = \frac{2 + 1}{21 + 19} = \frac{3}{40}$$
+$$ P(\text{back} | \text{Negative} ) = \frac{1 + 1}{21 + 19} = \frac{2}{40}$$
+$$ P(\text{but} | \text{Negative} ) = \frac{1 + 1}{21 + 19} = \frac{2}{40}$$
+$$ P(\text{can} | \text{Negative} ) = \frac{0 + 1}{21 + 19} = \frac{1}{40}$$
+$$ P(\text{do} | \text{Negative} ) = \frac{2 + 1}{21 + 19} = \frac{3}{40}$$
+$$ P(\text{expected} | \text{Negative} ) = \frac{1 + 1}{21 + 19} = \frac{2}{40}$$
+$$ P(\text{food} | \text{Negative} ) = \frac{1 + 1}{21 + 19} = \frac{2}{40}$$
+$$ P(\text{go} | \text{Negative} ) = \frac{1 + 1}{21 + 19} = \frac{2}{40}$$
+$$ P(\text{good} | \text{Negative} ) = \frac{1 + 1}{21 + 19} = \frac{2}{40}$$
+$$ P(\text{is} | \text{Negative} ) = \frac{1 + 1}{21 + 19} = \frac{2}{40}$$
+$$ P(\text{long} | \text{Negative} ) = \frac{1 + 1}{21 + 19} = \frac{2}{40}$$
+$$ P(\text{must} | \text{Negative} ) = \frac{0 + 1}{21 + 19} = \frac{1}{40}$$
+$$ P(\text{nice} | \text{Negative} ) = \frac{1 + 1}{21 + 19} = \frac{2}{40}$$
+$$ P(\text{not} | \text{Negative} ) = \frac{3 + 1}{21 + 19} = \frac{4}{40}$$
+$$ P(\text{service} | \text{Negative} ) = \frac{0 + 1}{21 + 19} = \frac{1}{40}$$
+$$ P(\text{to} | \text{Negative} ) = \frac{2 + 1}{21 + 19} = \frac{3}{40}$$
+$$ P(\text{try} | \text{Negative} ) = \frac{0 + 1}{21 + 19} = \frac{1}{40}$$
+$$ P(\text{wait} | \text{Negative} ) = \frac{1 + 1}{21 + 19} = \frac{2}{40}$$
+$$ P(\text{want} | \text{Negative} ) = \frac{2 + 1}{21 + 19} = \frac{3}{40}$$
+
+\noindent \textbf{(ii)} Classify the following review by using the Naive Bayes classifier of Q3(a)(i):
+\begin{center}\verb|want to go back back|\end{center}
+
+\scriptsize
+$$P(\text{Positive}|d) = \frac{1}{P(d)} \frac{1}{36} \cdot \frac{2}{36} \cdot \frac{2}{36} \cdot (\frac{2}{36})^2 \cdot \frac{4}{7}= 0.151 \times 10^{-6}$$
+
+$$P(\text{Negative}|d) = \frac{1}{P(d)} \frac{3}{40} \cdot \frac{3}{40} \cdot \frac{2}{40} \cdot (\frac{2}{40})^2  \cdot \frac{3}{7}= 0.301 \times 10^{-6}$$
+\normalsize
+
+\noindent Since $P(\text{Negative}|d) > P(\text{Positive}|d)$, we classify the review as Negative.\\
+
+\noindent \textbf{(iii)} Classify the following review with the Rocchio classification method using the reviews in the table as training data
+\begin{center}\verb|food is not nice food|\end{center}
+
+\noindent Answer: Before normalize
+\scriptsize
+\begin{center}
+\begin{tabular}{| l | l l l l l l l |}
+\hline
+Term     & ID1 & ID2 & ID3 & ID4 & ID5 & ID6 & ID7 \\ \hline
+as       & 0   & 1   & 0   & 0   & 2   & 0   & 0   \\
+back     & 0   & 0   & 1   & 0   & 0   & 1   & 0   \\
+but      & 0   & 0   & 0   & 0   & 1   & 0   & 0   \\
+can      & 0   & 0   & 1   & 0   & 0   & 0   & 0   \\
+do       & 0   & 0   & 0   & 0   & 0   & 1   & 1   \\
+expected & 0   & 1   & 0   & 0   & 1   & 0   & 0   \\
+food     & 1   & 1   & 0   & 0   & 1   & 0   & 0   \\
+go       & 0   & 0   & 1   & 0   & 0   & 1   & 0   \\
+good     & 0   & 1   & 0   & 0   & 1   & 0   & 0   \\
+is       & 0   & 1   & 0   & 0   & 1   & 0   & 0   \\
+long     & 0   & 0   & 0   & 0   & 0   & 0   & 1   \\
+must     & 0   & 0   & 0   & 1   & 0   & 0   & 0   \\
+nice     & 2   & 0   & 0   & 0   & 1   & 0   & 0   \\
+not      & 0   & 0   & 1   & 0   & 1   & 1   & 1   \\
+service  & 1   & 0   & 0   & 0   & 0   & 0   & 0   \\
+to       & 0   & 0   & 1   & 0   & 0   & 1   & 1   \\
+try      & 0   & 0   & 0   & 1   & 0   & 0   & 0   \\
+wait     & 0   & 0   & 1   & 0   & 0   & 0   & 1   \\
+want     & 0   & 0   & 0   & 0   & 0   & 1   & 1   \\ \hline
+\end{tabular}
+\end{center}
+\normalsize
+
+\clearpage
+\noindent We do a normalization without TF-IDF (you can do TF-IDF too). 
+
+\scriptsize
+\begin{center}
+\begin{tabular}{| l | l l l l l l l |}
+\hline
+Term     & ID1  & ID2  & ID3  & ID4  & ID5  & ID6  & ID7 \\ \hline
+as       & 0    & 0.45 & 0    & 0    & 0.60 & 0    & 0   \\
+back     & 0    & 0    & 0.41 & 0    & 0    & 0.41 & 0   \\
+but      & 0    & 0    & 0    & 0    & 0.30 & 0    & 0   \\
+can      & 0    & 0    & 0.41 & 0    & 0    & 0    & 0   \\
+do       & 0    & 0    & 0    & 0    & 0    & 0.41 & 0.41\\
+expected & 0    & 0.45 & 0    & 0    & 0.30 & 0    & 0   \\
+food     & 0.41 & 0.45 & 0    & 0    & 0.30 & 0    & 0   \\
+go       & 0    & 0    & 0.41 & 0    & 0    & 0.41 & 0   \\
+good     & 0    & 0.45 & 0    & 0    & 0.30 & 0    & 0   \\
+is       & 0    & 0.45 & 0    & 0    & 0.30 & 0    & 0   \\
+long     & 0    & 0    & 0    & 0    & 0    & 0    & 0.41\\
+must     & 0    & 0    & 0    & 0.71 & 0    & 0    & 0   \\
+nice     & 0.82 & 0    & 0    & 0    & 0.30 & 0    & 0   \\
+not      & 0    & 0    & 0.41 & 0    & 0.30 & 0.41 & 0.41\\
+service  & 0.41 & 0    & 0    & 0    & 0    & 0    & 0   \\
+to       & 0    & 0    & 0.41 & 0    & 0    & 0.41 & 0.41\\
+try      & 0    & 0    & 0    & 0.71 & 0    & 0    & 0   \\
+wait     & 0    & 0    & 0.41 & 0    & 0    & 0    & 0.41\\
+want     & 0    & 0    & 0    & 0    & 0    & 0.41 & 0.41\\ \hline
+\end{tabular}
+\end{center}
+\normalsize
+
+\noindent I do not finish the solution for this answer, it takes too long to finish. \\
+
+\noindent \textbf{Question 3b} Calculate the macro-averaged and micro-average F-measure of the text classification system whose results on two classes are shown in the following tables:
+
+\noindent For class A:
+\begin{center}
+\begin{tabular}{| l | l | l |}
+\hline
+             & Truth: Yes & Truth No \\ \hline
+System: Yes  & 4  & 8 \\ \hline
+System: No   & 10 & 28\\ \hline
+\end{tabular}
+\end{center}
+
+\noindent For class B:
+\begin{center}
+\begin{tabular}{| l | l | l |}
+\hline
+             & Truth: Yes & Truth No \\ \hline
+System: Yes  & 12 & 4  \\ \hline
+System: No   & 8  & 26 \\ \hline
+\end{tabular}
+\end{center}
+
+$$P_A = \frac{4}{12}$$
+$$R_A = \frac{4}{14}$$
+$$F_A = \frac{2PR}{P+R} = \frac{4}{13}$$
+
+$$P_B = \frac{12}{16}$$
+$$R_B = \frac{12}{20}$$
+$$F_B = \frac{2PR}{P+R} = \frac{2}{3}$$
+
+\noindent For macro-averaging, the weight is the same:
+
+$$F = \frac{1}{2} \cdot \frac{4}{13} + \frac{1}{2} \cdot \frac{2}{3} = 0.487$$
+
+\noindent For micro-averaging:
+
+$$P = \frac{4 + 12}{12 + 16} = \frac{16}{28}$$
+$$R = \frac{4 + 12}{14 + 20} = \frac{16}{32}$$
+$$F = 0.516$$
+
+\noindent \textbf{Question 3c} If we have very little data for training a text classification system, what approaches can we use to solve the problem?
+
+\noindent Answer: Fist, we can solve the problem by collecting more data. Second, since overfitting problem will occur when training data are small, we can use cross-validation technique and regularization technique to avoid overfitting. Third, we can do random subsampling or bootstrapping. 
+
+
 \end{multicols*}
 \end{document}
