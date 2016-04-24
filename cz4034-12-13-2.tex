@@ -355,8 +355,151 @@ $$F = 0.516$$
 
 \noindent \textbf{Question 3c} If we have very little data for training a text classification system, what approaches can we use to solve the problem?
 
-\noindent Answer: Fist, we can solve the problem by collecting more data. Second, since overfitting problem will occur when training data are small, we can use cross-validation technique and regularization technique to avoid overfitting. Third, we can do random subsampling or bootstrapping. 
+\noindent Answer: Fist, we can solve the problem by collecting more data. Second, since overfitting problem will occur when training data are small, we can use cross-validation technique and regularization technique to avoid overfitting. Third, we can do random subsampling or bootstrapping. \\
 
+\noindent \textbf{Question 4a} Cluster the following six vectors into two cluster by using the K-Means algorithm, supposing that the initial seeds are A1 and A6:
+
+$$A1=(1,4), A2=(2,6)$$
+$$A3=(5,8), A4=(5,3)$$
+$$A5=(6,6), A6=(7,4)$$
+
+\begin{tikzpicture}
+\begin{axis}[
+    enlargelimits=false,
+    axis equal
+]
+\addplot+[
+    nodes near coords,
+    only marks,
+    point meta=explicit symbolic
+]
+table[meta=label] {
+    x y label
+    1 4 A1
+    2 6 A2
+    5 8 A3
+    5 3 A4
+    6 6 A5
+    7 4 A6
+};
+\end{axis}
+\end{tikzpicture}
+
+\noindent After the first iteration, $A1$ and $A2$ in one cluster, and the rest in another cluster.
+
+$$\mu_1 = [1.5,5]$$
+$$\mu_2 = [5.75, 5.25]$$
+
+\begin{tikzpicture}
+\begin{axis}[
+    enlargelimits=false,
+    axis equal
+]
+\addplot+[
+    nodes near coords,
+    only marks,
+    point meta=explicit symbolic
+]
+table[meta=label] {
+    x y label
+    1 4 A1
+    2 6 A2
+    5 8 A3
+    5 3 A4
+    6 6 A5
+    7 4 A6
+    1.5 5 $\mu_1$
+    5.75 5.25 $\mu_2$
+};
+\end{axis}
+\end{tikzpicture}
+
+\noindent The algorithm converges after first iteration. \\
+
+\noindent \textbf{Question 4b} Describe the algorithm of Hierarchical Agglomerative Clustering. Illustrate TWO ways of measuring cluster similarity with examples
+
+\noindent Answer: Hierarchical Agglomerative Clustering is a bottom-up approach. It starts with $N$ clusters, where $N$ is the total number of data. Then, it repeatively merging two closest clusters and update the proximity matrix. The first way to measure cluster similarity is Euclidean distance:
+$$\text{dist}(d1,d2)=\sqrt{\sum_{i=1}^D (d1_{i} - d2_{i})^2}$$
+
+\noindent The second way to measure cluster similarity is Cosine Similarity: 
+$$\text{cosine}(\vec{d1},\vec{d2}) = \frac{\vec{d1} \cdot \vec{d2}}{|\vec{d1}||\vec{d2}|}$$
+
+\noindent For example, if we have two vector $[1,1]$ and $[2,2]$:
+$$\text{dist}(d1,d2)=\sqrt{(1-2)^2 + (1-2)^2} = \sqrt{2}$$
+$$\text{cosine}(\vec{d1},\vec{d2}) = \frac{(2\times 1) + (2\times 1)}{\sqrt{2}\sqrt{8}} = 1$$
+
+\noindent \textbf{Question 4b} Compute the PageRank of the Web pages in the graph below, assuming that et each step of the PageRank random walk, we teleport to a random page with probability 0.1 and a uniform distribution over teleport destinations. (Hint: Initial vector = (1,0,0))
+
+\begin{center}
+\begin{tikzpicture}[
+roundnode/.style={circle, draw=black, thin},
+]
+%Nodes
+\node[roundnode](C){C};
+\node[above=of C](dummy){};
+
+\node[roundnode](A)[left=of dummy]{A};
+
+\node[roundnode](B)[right=of dummy]{B};
+
+\path[pil] (A) edge [bend right=45] (C);
+\path[pil] (B) edge [bend right=45] (C);
+\path[pil] (C) edge [bend right=45] (B);
+\path[pil] (A) edge [bend left=45] (B);
+
+\end{tikzpicture}
+\end{center}
+
+\noindent Answer: Transition matrix
+\begin{center}
+\begin{tabular}{ |l|l|l|l| } 
+    \hline
+      & A  & B  & C \\
+    \hline 
+    A & 0  & 1  & 1  \\
+    B & 0  & 0  & 1  \\
+    C & 0  & 1  & 0  \\
+    \hline
+\end{tabular}
+\end{center}
+
+\noindent Transition probability matrix
+\begin{center}
+\begin{tabular}{ |l|l|l|l| } 
+    \hline
+      & A    & B  & C \\
+    \hline 
+    A & 0    & 0.5 & 0.5  \\
+    B & 0    & 0   & 1    \\
+    C & 0    & 1   & 0    \\
+    \hline
+\end{tabular}
+\end{center}
+
+\noindent Transition probability matrix with teleporting
+\begin{center}
+\begin{tabular}{ |l|l|l|l| } 
+    \hline
+      & A    & B    & C      \\
+    \hline 
+    A & 0.03  & 0.483 & 0.483  \\
+    B & 0.03  & 0.03  & 0.933 \\
+    C & 0.03  & 0.933 & 0.03  \\
+    \hline
+\end{tabular}
+\end{center}
+
+$$x = [1,0,0]$$
+$$xP = [0.03, 0.48, 0.48]$$
+$$xP^2 = [0.03, 0.48, 0.48]$$
+
+\noindent \textbf{Question 4d} Compare language models with vector space models, both for information retrieval.
+
+\noindent Not in syllabus\\
+
+\noindent \textbf{Question 4e} Explain the crawling for Web search engines works, depicting communication between modules (or nodes) of crawling, including both URL frontier and DNS.
+
+\noindent Solution not provided
 
 \end{multicols*}
 \end{document}
