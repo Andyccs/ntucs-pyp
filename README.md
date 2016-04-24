@@ -4,8 +4,8 @@ These LaTex documents contain the solutions of past year examination questions o
 
 To download these documents in PDF format: 
 
-- [2013-2014 Semester 2](https://github.com/Andyccs/information-retrieval-pyp/releases/download/v0.2/cz4034-13-14-2.pdf)
-- [2014-2015 Semester 2](https://github.com/Andyccs/information-retrieval-pyp/releases/download/v0.2/cz4034-14-15-2.pdf)
+- [2013-2014 Semester 2](https://github.com/Andyccs/information-retrieval-pyp/releases/download/v0.2.1/cz4034-13-14-2.pdf)
+- [2014-2015 Semester 2](https://github.com/Andyccs/information-retrieval-pyp/releases/download/v0.2.1/cz4034-14-15-2.pdf)
 
 ## Development
 
