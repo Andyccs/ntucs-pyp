@@ -6,6 +6,7 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{mathtools}
+\usepackage{minted}
 \usetikzlibrary{arrows,positioning}
 \tikzset{
     %Define standard arrow tip
@@ -35,7 +36,63 @@
 
 \section{Question 1}
 
-\noindent \textbf{Question 1a}
+\noindent \textbf{Question 1a} Write down the expanded biagram and permuterm queries for the following queries by filling in line 3 onwards in table below. Follow the example shown in the second row of the table.
+
+\begin{center}
+\begin{tabular}{| l | l | l | l |} 
+    \hline
+    Part      & Wilcard Query & Bigrams    & Permuterms \\
+    \hline
+    e.g       & SH*           & \$S, SH     & \$SH* \\
+    (i)       & N*T*U         & \$N, T, U\$ & U\$N* \\
+    (ii)      & S*T           & \$S, T\$    & T\$S* \\
+    (iii)     & *H*T          & H, T\$      & T\$*  \\
+    (iv)      & *H*           & H           & H*    \\
+    (v)       & S*I*T         & \$S, I, T   & \$S*  \\
+    \hline
+\end{tabular}
+\end{center}
+
+\noindent For (i) (iii) and (v), after searching for terms using the permuterms, we do exhausted filter on each terms.\\
+
+\noindent \textbf{Question 1b} Using your answers in Q1(a) as examples where applicable: \\
+
+\noindent \textbf{(i)} Name two advantages of permuterm over bigram
+
+\noindent Advantage 1: Permuterm is more efficient than bigram, for example, in Q1a(i) we need to do 2 search in two binary tree when using bigram approach, but we only need to do 1 search in 1 permuterm index when using permuterm approach. 
+
+\noindent Advantage 2: [Need help!]\\
+
+\noindent \textbf{(ii)} Name one advantage of bigrams over permuterms
+
+\noindent Answer: The index size bigram is smaller than permuterm.\\
+
+\noindent \textbf{(iii)} Describe the post-processing operations needed to weed out false matches for both bigram and permuterm approaches. 
+
+\noindent Answer: For bigram, we need to find intersection of terms in all result lists by using merging algorithm. For permuterms, we need to do exhausted filters for query with more than one *.\\
+
+\noindent \textbf{Question 1c} Suppose you are given two postings list for term X and term Y. Consider the following Boolean query.
+
+\begin{center}
+\verb|(NOT X) AND (NOT Y)|
+\end{center}
+
+\noindent \textbf{(i)} Write a postings merge algorithm in pseudocode or describe in English the steps of your algorithm.
+
+\noindent Answer: since the boolean expression is equivalent to \verb|NOT( X OR Y )|, the algorithm:
+
+\begin{minted}{text}
+define ALL_DATA
+XY = Merge X and Y without duplication
+Remove elements of XY from ALL_DATA
+\end{minted}
+
+\noindent Note: the real answer should be longer than this, specifically, the last steps need to elaboration. \\
+
+\noindent \textbf{(ii)} If $x$ and $y$ are the lengths of posting X and Y, respectively, what is the complexity of your merge algorithm in Big O notation? Hint: normal merge complexity is $O(x+y)$.
+
+\noindent Answer: We need $O(x+y)$ complexity to merge X and Y. To remove $x+y$ data from a list with $n$ elements, we need $O((x+y)+n)$. Hence, the worse case complexity for the algorithm is $O(x+y+n)$.
+
 
 
 \end{multicols*}
