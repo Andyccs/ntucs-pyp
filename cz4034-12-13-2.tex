@@ -93,7 +93,86 @@ Remove elements of XY from ALL_DATA
 
 \noindent Answer: We need $O(x+y)$ complexity to merge X and Y. To remove $x+y$ data from a list with $n$ elements, we need $O((x+y)+n)$. Hence, the worse case complexity for the algorithm is $O(x+y+n)$.
 
+\section{Question 2}
 
+\noindent \textbf{Question 2a} In Single-Pass In-Memory Indexing (SPIMI), each block maintains its own dictionary of terms. When memory is exhausted, the block is written to the disk\\
+
+\noindent \textbf{(i)} Explain why each block's term dictionary must be sorted prior to writing block to the disk.
+
+\noindent Not in syllabus\\
+
+\noindent \textbf{(ii)} Is each postings list sorted in ascending doc ID order? Justify your answer. 
+
+\noindent Not in syllabus\\
+
+\noindent \textbf{Question 2b} The top 10 retrieval results for two search engines SE1 and SE2 are shown below (1=relevant, 0=irrelevant) where the leftmost item is the top ranked search result. Assume there are 4 relevant documents.
+
+\begin{center}
+\begin{tabular}{ l l l l l l l l l l l l}
+    SE1 & 1 & 0 & 1 & 0 & 0 &  & 0 & 0 & 0 & 1 & 1 \\
+    SE2 & 0 & 1 & 0 & 0 & 1 &  & 1 & 1 & 0 & 0 & 0 \\
+\end{tabular}
+\end{center}
+
+\noindent \textbf{(i)} Compute the Mean Average Precision of each search engine.
+
+\noindent Answer: For SE1
+
+$$\text{Precision@1}=1$$
+$$\text{Precision@3}=2/3$$
+$$\text{Precision@9}=3/9$$
+$$\text{Precision@10}=4/10$$
+$$\text{MAP} = \frac{1}{4} \cdot (1 + \frac{2}{3} + \frac{3}{9} + \frac{4}{10})= 0.60$$
+
+\noindent For SE2:
+
+$$\text{Precision@2}=1/2$$
+$$\text{Precision@5}=2/5$$
+$$\text{Precision@6}=3/6$$
+$$\text{Precision@7}=4/7$$
+$$\text{MAP} = \frac{1}{4} \cdot (\frac{1}{2} + \frac{2}{5} + \frac{3}{6} + \frac{4}{7}) = 0.49$$
+
+\noindent \textbf{(ii)} Compute the R-precision of each search engine.
+
+\noindent Not in syllabus\\
+
+\noindent \textbf{(iii)} Which search engine is better? Explain your answer.
+
+\noindent Answer: according to MAP of two search engine, SE1 is better because it has higher MAP. \\
+
+\noindent \textbf{Question 2c} Consider the following XML fragment:
+
+\begin{minted}{xml}
+<person>
+    <firstname>John Middle</firstname>
+    <lastname>Doe</lastname>
+    <email>john.doe@gmail.com</email>
+</person>
+\end{minted}
+
+\noindent \textbf{(i)} Enumerate \underline{all} structural terms for this XML fragment by fillling in table below. Apply case-folding and punctuation-removal, using a word as the base unit. The first three structural terms have been enumerated for you
+
+\begin{center}
+\begin{tabular}{| l | l | l |}
+    \hline
+    Term & Lexicalized & Lexicalize \\
+         & sutree 1    & subtree 2  \\
+    \hline
+    \verb|"john"| & \verb|/firstname#| & \verb|/person/|\\
+                  & \verb|"john"|      & \verb|firstname#"john"| \\
+    \hline
+\end{tabular}
+\end{center}
+
+\noindent Not in syllabus\\
+
+\noindent \textbf{(ii)} How many dimensions are needed if the vector space model is used to represent this XML fragment via the structural terms? That is, how many terms are there in the vocabulary/lexicon?
+
+\noindent Not in syllabus\\
+
+\noindent \textbf{(iii)} Using each XML fragment as a ``document'', and assuming that the \verb|<email>| fragment has a lower weight/importance than \verb|<lastname>|, list the returned full lexicalized subtrees in descending order of similarity for the query ``doe''.
+
+\noindent Not in syllabus
 
 \end{multicols*}
 \end{document}
