@@ -1,6 +1,6 @@
 # CZ4034 Information Retrieval PYP
 
-This LaTex document contains the solution of past year examination questions of the course CZ4034 Information Retrieval, offered by School of Computer Science and Engineering, Nanyang Technological University, Singapore. 
+These LaTex documents contain the solutions of past year examination questions of the course CZ4034 Information Retrieval, offered by School of Computer Science and Engineering, Nanyang Technological University, Singapore. 
 
 To download these documents in PDF format: 
 
