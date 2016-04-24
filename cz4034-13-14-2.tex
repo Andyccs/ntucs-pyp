@@ -40,7 +40,7 @@
 
 \noindent \textbf{(i)} Define ``Document frequency''
 
-\noindent Answer: document frequency is number of times a term occurs in a collection of documents. Rare term has low document frequency, and is more informative than frequent terms.\\
+\noindent Answer: Document frequency is number of times a term occurs in a collection of documents. Rare term has low document frequency, and is more informative than frequent terms.\\
 
 \noindent \textbf{(ii)} Explain why an inverted index includes document frequencies.
 
@@ -63,7 +63,7 @@
 \end{tabular}
 \end{center}
 
-\noindent Maximum number of document for:
+\noindent Answer: Maximum number of document for:
 \begin{itemize}
     \item (blue OR sky) = 33108
     \item (red OR apple) = 25467
@@ -119,9 +119,9 @@ $$50000=k(1000000)^b$$
 
 \noindent \textbf{(i)} Length normalization: A vector can be normalized by dividing each of its components by its length. Dividing a vector by its $L_2$ norm makes it a unit vector. Long and short documents now have comparable weights. Let say we have a document vector $\vec{d} = [1,1,0]$. We normalize the vector by using the following formula:
 
-$$\vec{d_{\text{norm}}} = \frac{\vec{d}}{|\vec{d}|}$$
+$$\vec{d}_{\text{norm}} = \frac{\vec{d}}{|\vec{d}|}$$
 
-\noindent norm of $\vec{d} = \sqrt{2}$, hence $vec{d} = [0.707, 0.707, 0]$ \\
+\noindent $|\vec{d}| = \sqrt{2}$, hence $\vec{d}_{\text{norm}} = [0.707, 0.707, 0]$ \\
 
 \noindent \textbf{(ii)} Lossy compression: In lossy compression, the lost information after compression cannot be recovered. Several of the preprocessing steps can be viewed as lossy compression, such as case folding, stopwords, stemming, number elimination. \\
 
@@ -370,7 +370,7 @@ $$\text{cosine}(\mu_{\text{YES}}, d_{\text{test}}) = 0.255$$
 \begin{split}
    \chi^2(t,c) &= \frac{N\times (AD - BC)^2}{(A+B) \times (C+D) \times (A+C) \times (B+D)} \\
    &= \frac{90\times ((39 \times 14) - (16 \times 21))^2}{55\times 35 \times 60 \times 30}\\
-   &= 1.145 > 3.84
+   &= 1.145 < 3.84
 \end{split}
 \end{equation*}
 
