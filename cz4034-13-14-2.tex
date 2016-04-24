@@ -74,7 +74,7 @@
 
 \noindent \textbf{Question 1b} Explain why IR systems typically do not remove stop words from their indexes. 
 
-\noindent By having good compression techniques, the spaces that are required to store stop words are very small. In addition, by having good query optimization techniques, we only need to pay a little performance trade-off to include stop words. Furthermore, we need stop words for phrase query (e.g. King of Denmark) and relational query (e.g. flight to London). \\
+\noindent Answer: By having good compression techniques, the spaces that are required to store stop words are very small. In addition, by having good query optimization techniques, we only need to pay a little performance trade-off to include stop words. Furthermore, we need stop words for phrase query (e.g. King of Denmark) and relational query (e.g. flight to London). \\
 
 \noindent \textbf{Question 1c} Compute the edit distance between ``SCE'' and ``CEE'' by using the dynamic programming algorithm of Levenshtein distance. 
 
@@ -123,7 +123,7 @@ $$\vec{d_{\text{norm}}} = \frac{\vec{d}}{|\vec{d}|}$$
 
 \noindent norm of $\vec{d} = \sqrt{2}$, hence $vec{d} = [0.707, 0.707, 0]$ \\
 
-\noindent \textbf{(ii)} Lossy compression: in lossy compression, the lost information after compression cannot be recovered. Several of the preprocessing steps can be viewed as lossy compression, such as case folding, stopwords, stemming, number elimination. \\
+\noindent \textbf{(ii)} Lossy compression: In lossy compression, the lost information after compression cannot be recovered. Several of the preprocessing steps can be viewed as lossy compression, such as case folding, stopwords, stemming, number elimination. \\
 
 \noindent \textbf{(iii)} XPath: (not in syllabus) XPath is a syntax for defining parts of an XML document. XPath uses path expressions to navigate in XML documents. \\
 
@@ -251,7 +251,7 @@ $$\text{cosine}(\text{doc2},\text{doc3})=0$$
 \noindent \textbf{(i)} Based on the training set in the table, build a multinomial Naive Bayes classifier to classify the following user review:
 \begin{center}\verb|fast cool bugs|\end{center}
 
-\noindent There are 10 vocabulary:
+\noindent Answer: There are 10 vocabulary:
 
 $$P(NO) = \frac{1}{4}$$
 $$P(YES) = \frac{3}{4}$$
@@ -358,7 +358,7 @@ $$\text{cosine}(\mu_{\text{YES}}, d_{\text{test}}) = 0.255$$
     \hline
             & French     & Japanese   & Total \\
     \hline 
-    Mal     & $A = 39$   & $B = 16$   & $A+B=55$ \\
+    Male    & $A = 39$   & $B = 16$   & $A+B=55$ \\
     Female  & $C = 21$   & $D = 14$   & $C+D=35$ \\
     Total   & $A+C = 60$ & $B+D = 30$ & $N=90$ \\
     \hline
