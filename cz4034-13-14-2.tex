@@ -40,7 +40,7 @@
 
 \noindent \textbf{(i)} Define ``Document frequency''
 
-\noindent Answer: Document frequency is number of times a term occurs in a collection of documents. Rare term has low document frequency, and is more informative than frequent terms.\\
+\noindent Answer: Document frequency is number of documents that contains the term. Rare term has low document frequency, and is more informative than frequent terms.\\
 
 \noindent \textbf{(ii)} Explain why an inverted index includes document frequencies.
 
@@ -341,7 +341,7 @@ $$\text{cosine}(\mu_{\text{YES}}, d_{\text{test}}) = 0.255$$
 
 \noindent \textbf{Question 3b} Let $|D|$ be the number of documents in training set, $|V|$ be the vocabulary size, and $|C|$ be the number of classes. Give the training time complexity of Naive Bayes algorithm, and indicate which term is expected to dominate the time complexity for most text collection.
 
-\noindent Answer: the time complexity is $O(|C||V|+|D|)$. The term $|D|$ is expected to dominate the time complexity for most text collections. \\
+\noindent Answer: the time complexity is $O(|C||V|+|D|L)$, where $L$ is the average length of documents. The term $|D|$ is expected to dominate the time complexity for most text collections. \\
 
 \noindent \textbf{Question 3c} Briefly compare the bias-variance tradeoff between k-Nearest Neighbors and Naive Bayes algorithms
 
@@ -399,7 +399,7 @@ table[meta=label] {
 \end{axis}
 \end{tikzpicture}
 
-\noindent Answer: by looking at the plot, we know that point $B$ belongs to $A$, point $C$ belongs to $D$, and point $F$ belongs to $C$. Then, we update the centroids:
+\noindent Answer: By looking at the plot, we know that point $B$ belongs to $A$, point $E$ belongs to $D$, and point $F$ belongs to $C$. Then, we update the centroids:
 
 $$\mu_1 = [4,0]$$
 $$\mu_2 = [16,3]$$
