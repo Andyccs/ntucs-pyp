@@ -11,7 +11,7 @@ build:
 
 clean:
 	ls | grep '.aux\|.log\|.toc\|.pyg\|.out\|.lot\|.blg\|.bbl\|.lof' | xargs rm 
-	rm -rf _minted-main
+	rm -rf _minted-*
 
 clean-pdf: 
 	rm cz4034-12-13-2.pdf
