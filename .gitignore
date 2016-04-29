@@ -159,3 +159,4 @@ pythontex-files-*/
 TSWLatexianTemp*
 
 *.pdf
+*.sublime-workspace
