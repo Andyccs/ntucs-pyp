@@ -153,6 +153,124 @@ public interface Callback
 
 \noindent $d$ can be 0, 2, or, 12.
 
+\section{Question 3}
+
+\noindent \textbf{Question 3a i}
+
+\noindent In routing, each node $n$ sends a query for key $k$ to the node in entry $\lfloor log_2(k-n) \rfloor + 1$. To route from N76 to $K58 \equiv 58 + 128 = K186$, we use the:
+
+$$\lfloor log_2(186-76) \rfloor + 1 = 7\text{-th entry}$$
+
+\noindent The 7th entry of N76 is:
+
+$$76 + 2^{7-1} = 140 \equiv \text{N13}$$
+
+\noindent Now, we are at N13. To route from N13 to K58, we use the:
+
+$$\lfloor log_2(58-13) \rfloor + 1 = 6\text{-th entry}$$
+
+\noindent The 6th entry of N13 is:
+
+$$13 + 2^{6-1} = 45 \equiv \text{N46}$$
+
+\noindent Now, we are at N46. To route from N46 to K58, we use the:
+
+$$\lfloor log_2(58-46) \rfloor + 1 = 4\text{-th entry}$$
+
+\noindent The 4th entry of N46 is:
+
+$$46 + 2^{4-1} = 54 \equiv \text{N55}$$
+
+\noindent Now, we are at N55. To route from N55 to K58, we use the:
+
+$$\lfloor log_2(58-55) \rfloor + 1 = 2\text{-nd entry}$$
+
+\noindent The 2nd entry of N55 is:
+
+$$55 + 2^{2-1} = 57 \equiv \text{N61}$$
+
+\noindent Now, we are at N61, which contains the information of K58. \\
+
+\noindent In summary, the route from N76 to K58 is N13 $\rightarrow$ N46 $\rightarrow$ N55 $\rightarrow$ N61.\\
+
+\noindent \textbf{Question 3a ii}
+
+\noindent The finger table for N55:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  Entry & At-least & Identifier & Range\\ \hline
+  1     & 56       & N61        & $56\le x <61$\\
+  2     & 57       & N61        & $57\le x <61$\\
+  3     & 59       & N61        & $59\le x <61$\\
+  4     & 63       & N76        & $63\le x <76$\\
+  5     & 71       & N76        & $71\le x <76$\\
+  6     & 87       & N116       & $87\le x <116$\\
+  7     & 116      & N122       & $116\le x <122$\\ \hline
+\end{tabular}
+\end{center}
+
+\noindent Let $x$ be the range of possible node identifiers of new node. By combining all the ranges, the possible value of $x$ are:
+$$56\le x <61, 63\le x <76,87\le x <116,116\le x <122$$
+
+\noindent \textbf{Question 3b i}
+
+\noindent There is only one possibility, i.e. when both events occurs at process $p_1$. \\
+
+\noindent \textbf{Question 3b ii}
+
+\noindent $e_A$ occurs in process $p_2$, and $e_B$ occurs in process $p_3$.
+
+\begin{center}
+\begin{tikzpicture}[>=stealth',thick,
+roundnode/.style={circle, draw=black, thick, minimum size=0.7cm},
+]
+\node[] (p1) {$p_3$};
+\node[below=1cm of p1] (p2) {$p_2$};
+\node[below=1cm of p2] (p3) {$p_1$};
+
+\node[roundnode](a)[right = 1mm of p1.east]{a};
+\node[roundnode](b)[right = 8mm of p3.east]{b};
+\node[roundnode](c)[right = 8mm of b]{c};
+\node[roundnode](d)[right = 35mm of p2.east]{d};
+\node[roundnode](e)[right = 8mm of d]{e};
+\node[roundnode](f)[right = 25mm of c]{f};
+\node[roundnode](g)[right = 10mm of f]{g};
+\node[roundnode](h)[right = 10mm of e]{h};
+
+\node[right = 80mm of p1](d1){};
+\node[right = 80mm of p2](d2){};
+\node[right = 80mm of p3](d3){};
+
+\draw[->] (a) -- (b);
+\draw[-] (b) -- (c);
+\draw[->] (c) -- (d);
+\draw[-] (d) -- (e);
+\draw[-] (e) -- (h);
+\draw[->] (e) -- (f);
+\draw[-] (f) -- (g);
+
+% Dummy 
+\draw[-] (p2) -- (d);
+\draw[-] (p3) -- (b);
+\draw[-] (a) -- (d1);
+\draw[-] (h) -- (d2);
+\draw[-] (g) -- (d3);
+\draw[-] (c) -- (f);
+
+% Label
+\node[above=1mm of a](labela){(0,0,50)};
+\node[below=1mm of b](labelc){(1,0,50)};
+\node[below=1mm of c](labelc){(30,0,50)};
+\node[above=1mm of d](labeld){(30,1,50)};
+\node[above=1mm of e](labele){(30,20,50)};
+\node[below=1mm of f](labelf){(31,20,50)};
+\node[below=1mm of g](labelg){(60,20,50)};
+\node[above=1mm of h](labelg){(30,40,50)};
+
+\end{tikzpicture}
+\end{center}
 
 \end{multicols*}
 \end{document}

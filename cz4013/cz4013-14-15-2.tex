@@ -82,11 +82,11 @@ public interface Callback
 
 \noindent \textbf{Question 1b ii}
 
-\noindent In routing, each node $n$ sends a query for key $k$ to the node in entry $\lfloor log_2(k-n) \rfloor + 1$. To route from N42 to $K27 \equiv 27 + 63 = K90$, we use the
+\noindent In routing, each node $n$ sends a query for key $k$ to the node in entry $\lfloor log_2(k-n) \rfloor + 1$. To route from N42 to $K27 \equiv 27 + 64 = K91$, we use the:
 
-$$\lfloor log_2(90-42) \rfloor + 1 = 6\text{-th entry}$$
+$$\lfloor log_2(91-42) \rfloor + 1 = 6\text{-th entry}$$
 
-\noindent Now, we are at N12. To route from N12 to K27, we use the
+\noindent Now, we are at N12. To route from N12 to K27, we use the:
 
 $$\lfloor log_2(27-12) \rfloor + 1 = 4\text{-th entry}$$
 
@@ -94,7 +94,7 @@ $$\lfloor log_2(27-12) \rfloor + 1 = 4\text{-th entry}$$
 
 $$12 + 2^{4-1} = 22 \equiv \text{N22}$$
 
-\noindent Now, we are at N22. To route from N22 to K27, we use the
+\noindent Now, we are at N22. To route from N22 to K27, we use the:
 
 $$\lfloor log_2(27-22) \rfloor + 1 = 3\text{-th entry}$$
 
@@ -108,7 +108,39 @@ $$22 + 2^{3-1} = 26 \equiv \text{N36}$$
 
 \noindent \textbf{Question 1b iii}
 
-\noindent For N36, any node added between N36 to N12 will cause it to update its finger table. For N42, any node added between N42 to N12 will cause it to update its finger table. So for both nodes to update their finger table, the new node must have an identifier between $42<n\le 63$ or $0\le n <12$.
+\noindent The finger table for N42:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  Entry & At-least & Identifier & Range\\ \hline
+  1     & 43       & N45        & $43\le x <45$\\
+  2     & 44       & N45        & $44\le x <45$\\
+  3     & 46       & N48        & $46\le x <48$\\
+  4     & 50       & N62        & $50\le x <62$\\
+  5     & 58       & N62        & $58\le x <62$\\
+  6     & 10       & N12        & $10\le x <12$\\ \hline
+\end{tabular}
+\end{center}
+
+\noindent The finger table for N36:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  Entry & At-least & Identifier & Range\\ \hline
+  1     & 37       & N42        & $37\le x <42$\\
+  2     & 38       & N42        & $38\le x <42$\\
+  3     & 40       & N42        & $40\le x <42$\\
+  4     & 44       & N45        & $44\le x <45$\\
+  5     & 52       & N62        & $52\le x <62$\\
+  6     & 4        & N12        & $4 \le x <12$\\ \hline
+\end{tabular}
+\end{center}
+
+\noindent Let $x$ be the range of possible node identifiers of new node. By combining all the ranges, the possible value of $x$ are:
+
+$$x=44,52\le x<62, 10 \le x < 12$$
 
 \section{Question 2}
 
