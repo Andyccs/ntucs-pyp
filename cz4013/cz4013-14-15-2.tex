@@ -178,5 +178,61 @@ $$22 + 2^{3-1} = 26 \equiv \text{N36}$$
 
 \noindent The server sends the file and a callback promise to $A$ in $r_1$. Server has sent a callback to $A$ at $u_1$ to set the callback promise to \verb|cancelled|. At $r_7$, since the callback is \verb|cancelled|, the server sends the file to $A$ again. The number of times the file is transferred from the server to $A$ is 2. 
 
+\section{Question 3}
+
+\noindent \textbf{Question 3a i}
+
+\noindent Timestamp $T_1,T_3,T_4$ are required because we need to calculate the round-trip-time and know local time of $S$ when sending message $m_2$.\\
+
+\noindent \textbf{Question 3a ii}
+
+\noindent The round-trip-time is:
+$$RTT = T_4 - T-1 = 00:00:05.895$$
+
+\noindent When $C$ receives message $m_2$ from $S$, the local time of $S$ is between:
+
+$$[T_3, T_3+RTT]$$
+$$[06:25:03.009, 06:25:08.904]$$
+
+\noindent So $C$ should set its time to:
+$$06:25:03.009, 2.947 = 06:25:05.956$$
+
+\noindent \textbf{Question 3a iii}
+
+\noindent The accuracy is bound within $\pm 00:00:02.947$ seconds.\\
+
+\noindent \textbf{Question 3b i}
+
+\noindent All timestamp $T_1,T_2,T_3,T_4$ are required because we need to consider the total transmission time and processing time of server $S$.\\
+
+\noindent \textbf{Question 3b ii}
+
+\noindent The total transmission time is:
+
+$$(T_4 - T_1) - (T_3 - T_2) = 00:00:01.166$$
+
+\noindent When $C$ receives $m_2$ from $S$, the time at $S$ is between: 
+$$[T_3, T_3 + 00:00:01.166]$$
+$$[06:25:03.009, 06:25:04.175]$$
+
+\noindent So $C$ should set its time to:
+$$T_3 + 0.583 = 06:25:03.592$$
+
+\noindent \textbf{Question 3b iii}
+
+\noindent The accuracy is bound within $\pm 00:00:00.583$ seconds.\\
+
+\noindent \textbf{Question 3c}
+
+\noindent The accuracy of Christian's algorithm or NTP depend on network delay. If the network delay is longer, the accuracy is worsen. To handle this problem in Christian's algorithm and NTP, we repeat the algorithm for reasonable amount of times at take the one with the highest accuracy.
+
+\noindent \textbf{Question 3d}
+
+\noindent A vector clock for $N$ processes is an array of $N$ integers. Each process has its own vector clock. Let $V_{p_i}$ be the vector clock for process $p_i$.\\
+
+\noindent When a process $p_a$ perform an action in its own process, the vector clock is incremented $V_{p_a}[a] += 1$.\\
+
+\noindent When a $p_a$ sends a request to $p_b$, it sends its vector clock $V_{p_a}$ to be as well. When $p_b$ receives the request, $p_b$ sets its vector clock to $V_{p_b}[i] = max(V_{p_a}[i], V_{p_b}[i]), \text{for } i=1\ldots N$. Then, $p_b$ increment the vector clock $V_{p_b}[b] += 1$.
+
 \end{multicols*}
 \end{document}
