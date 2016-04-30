@@ -103,5 +103,80 @@ $$22 + 2^{3-1} = 26 \equiv \text{N36}$$
 
 \noindent For N36, any node added between N36 to N12 will cause it to update its finger table. For N42, any node added between N42 to N12 will cause it to update its finger table. So for both nodes to update their finger table, the new node must have an identifier between $42<n\le 63$ or $0\le n <12$.
 
+\section{Question 2}
+
+\noindent \textbf{Question 2a i}
+
+\noindent Here is a list of all information:
+\begin{itemize}
+  \item Client computes arguments for a request: 2ms
+  \item Server processes a request: 16ms
+  \item Local OS send and receive operation: 1ms
+  \item Network propagation for request and reply: 5ms
+  \item Marshalling and unmarshalling: 1ms
+\end{itemize}
+
+\noindent Sequence of activities to complete a remote method invocation:
+\begin{enumerate}
+  \item Client compute arguments: 2ms
+  \item Client marshalling: 1ms
+  \item Client OS send: 1ms
+  \item Network propagation: 5ms
+  \item Server OS receive: 1ms
+  \item Server unmarshalling: 1ms
+  \item Server process: 16ms
+  \item Server marshalling: 1ms
+  \item Server OS send: 1ms
+  \item Network propagation: 5ms
+  \item Client OS receive: 1ms
+  \item Client OS unmarshalling: 1ms
+\end{enumerate}
+
+\noindent The total time required to complete a remote method invocation is 36ms.\\
+
+\noindent \textbf{Question 2a ii}
+
+\noindent When the client is running on single-threaded, two requests are run sequentially, so $36 \times 2 =72$ms is required to return from two remote method invocation requests.\\
+
+\noindent When the client is running on two threads, two requests are sent to the server at the same time, but server only can handle one request at a time. So the total time required to complete two requests are 56ms, because:
+\begin{enumerate}
+  \item Thread-1 and Thread-2 send the requests to server using 4ms
+  \item Network propagation: 5ms
+  \item Server processes the request from Thread-1 using 20ms
+  \item Then, server processes the request from Thread-2 using 20ms
+  \item Network propagation: 5ms
+  \item Thread-2 processes the request using 2ms
+\end{enumerate}
+
+\noindent \textbf{Question 2b i}
+
+\noindent When the freshness interval is 3 seconds, the client will only read the local cache within 3 seconds after the last validation time. If current time has passed 3 second freshness interval, the client will validation the file again with the server.\\
+
+\noindent Take note that NFS server operations are stateless and idempotent.\\
+
+\noindent Here is a list of consequences of client $A$ operations:
+\begin{enumerate}
+  \item $r_1$: server to transfer the file to $A$ because there is no local cache in $A$.
+  \item $r_2$: $A$ read the local cache, and it is \emph{not} the most recent update by $B$
+  \item $r_3$: $A$ validates the last modified time of the file with server, and found out that the file has been modified. So, the server transfer the file to $A$. $A$ reads the most recent update by $B$.
+  \item $r_4$: $A$ read the local cache, which is the most recent update by $B$
+  \item $r_5$: $A$ validates the last modified time fo the file with server, and found out that the file has not been modified. $A$ read local cache, which is the most recent update by $B$.
+  \item $r_6$: $A$ read the local cache, which is \emph{not} the most recent update by $B$.
+  \item $r_7$: $A$ validates the last modified time of the file with server, and found out that the file has been modified. So, the server transfer the file to $A$. $A$ reads the most recent update by $B$.
+  \item $r_8$: $A$ read the local cache, which is the most recent update by $B$
+\end{enumerate}
+
+\noindent The read operation of $A$ that return the most recent update by $B$ are $r_3,r_4,r_5,r_7,r_8$\\
+
+\noindent Transferring of files from server to client happens at $r_1,r_3,r_7$. The number of times the file is transferred from the server to $A$ is 3.\\
+
+\noindent \textbf{Question 2b ii}
+
+\noindent Callback mechanism is used to maintain cache con- sistency of client side. However, if there is an update at server side before a client close a session / file, the callback has no effect on the file at currect session. \\
+
+\noindent As a result, only the read operation at $r_7,r_8$ read the most recent update by $B$. \\
+
+\noindent The server sends the file and a callback promise to $A$ in $r_1$. Server has sent a callback to $A$ at $u_1$ to set the callback promise to \verb|cancelled|. At $r_7$, since the callback is \verb|cancelled|, the server sends the file to $A$ again. The number of times the file is transferred from the server to $A$ is 2. 
+
 \end{multicols*}
 \end{document}
