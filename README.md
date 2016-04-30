@@ -1,8 +1,10 @@
 # CZ4034 Information Retrieval PYP
 
-These LaTex documents contain the solutions of past year examination questions of the course CZ4034 Information Retrieval, offered by School of Computer Science and Engineering, Nanyang Technological University, Singapore. 
+These LaTex documents contain the solutions of past year examination questions for Computer Science courses offered by School of Computer Science and Engineering, Nanyang Technological University, Singapore. 
 
-To download these documents in PDF format: 
+# PDF Download
+
+CZ4034 Information Retrieval:
 
 - [2012-2013 Semester 2](https://github.com/Andyccs/information-retrieval-pyp/releases/download/v0.6/cz4034-12-13-2.pdf)
 - [2013-2014 Semester 2](https://github.com/Andyccs/information-retrieval-pyp/releases/download/v0.6/cz4034-13-14-2.pdf)
@@ -13,7 +15,7 @@ To download these documents in PDF format:
 To load this project using Sublime Text 3:
 
 ```Shell
-$ subl --project information-pyp.sublime-project
+$ subl --project ntucs-pyp.sublime-project
 ```
 
 If you would like to build this document from source, first you need to install TeX:
@@ -29,6 +31,7 @@ $ brew cask install mactex
 Once you have TeX installed, make sure that you can use `pdflatex` command in terminal. To build the document in PDF format:
 
 ```Shell
+# Change directory to some course first, then:
 $ make
 ```
 
