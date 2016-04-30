@@ -33,6 +33,8 @@
 
 \chapter{Semester 2 Examination 2014-2015\\CZ4013 Distributed System}
 
+\begin{multicols*}{2}
+
 \section{Question 1}
 
 \noindent \textbf{Question 1a}
@@ -44,18 +46,23 @@ public class Magazine {
 }
 
 // MagazineNotification.java
-public interface MagazineNotification implement Remote {
-  void register(Callback cbObject) throws RemoteException;
-  void deregister(Callback cbObject) throws RemoteException;
+public interface MagazineNotification 
+    implement Remote {
+  public void register(Callback cbObject, 
+      String title) 
+      throws RemoteException;
+  public void deregister(Callback cbObject) 
+      throws RemoteException;
 }
 
-// ClientCallback.java
-public interface ClientCallback implement Remote {
-  void newMagazine(Magazine magazine) throws RemoteException;
+// Callback.java
+public interface Callback 
+    implement Remote {
+  public void newMagazine(Magazine magazine) 
+      throws RemoteException;
 }
 \end{minted}
 
-\begin{multicols*}{2}
 \noindent \textbf{Question 1b i}
 
 \noindent The $i$-th entry in the finger table contains the first node that succeeds $n$ by at least $2^{i-1}$ on the identifier circle.

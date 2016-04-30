@@ -93,5 +93,66 @@ $$\text{throughput}=\frac{1}{d + c}$$
 
 \noindent The time points when $A$ needs to contact the server are $r_1,r_5,r_6,r_7,r_8$.\\
 
+\section{Question 2}
+
+\noindent \textbf{Question 2a}
+
+\begin{minted}{Java}
+// StockNotification.java
+public interface StockNotification 
+    implements Remote {
+  public void register(Callback cbObject, 
+      int percentage) 
+      throws RemoteException;
+  public void deregister(Callback cbObject) 
+      throws RemoteException;
+}
+
+// Callback.java
+public interface Callback 
+    implement Remote {
+  public void stockAlert(String companyName) 
+      throws RemoteException;
+}
+\end{minted}
+
+\noindent \textbf{Question 2b i}
+
+\noindent All possibility of $c$ and $c$:
+
+\begin{center}
+\begin{tabular}{|c|c|}
+  \hline
+  $c$ & $d$ \\
+  \hline
+  0  & 0  \\
+  0  & 2  \\
+  0  & 12 \\
+  2  & 2  \\
+  2  & 12 \\
+  12 & 12 \\ \hline
+\end{tabular}
+\end{center}
+
+\noindent \textbf{Question 2b ii}
+
+\noindent Monotonic-read: If a client reads the value of a data object x, any successive read operation on x by that client will always return that same value or a more recent value.\\
+
+\noindent There is no possibility that $c=10$. Let's assume that the question is wrong and $c=12$ instead, then the value of $d$ must be equal to $12$.\\
+
+\noindent \textbf{Question 2b iii}
+
+\noindent Read-your-write: The effect of a write operation by a client on a data object $x$ will always be seen by a successive read operation on $x$ by the same client.\\
+
+\noindent $a$ must be equal to 2 and $b$ must be equal to 12.\\
+
+
+\noindent \textbf{Question 2b iv}
+
+\noindent Write-follow-reads: A write operation by a client on a data object $x$ following a previous read operation on $x$ by the same client is guaranteed to take place on the same or a more recent value of $x$ that was read.\\
+
+\noindent $d$ can be 0, 2, or, 12.
+
+
 \end{multicols*}
 \end{document}
