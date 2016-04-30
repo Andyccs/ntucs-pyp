@@ -234,5 +234,80 @@ $$T_3 + 0.583 = 06:25:03.592$$
 
 \noindent When a $p_a$ sends a request to $p_b$, it sends its vector clock $V_{p_a}$ to be as well. When $p_b$ receives the request, $p_b$ sets its vector clock to $V_{p_b}[i] = max(V_{p_a}[i], V_{p_b}[i]), \text{for } i=1\ldots N$. Then, $p_b$ increment the vector clock $V_{p_b}[b] += 1$.
 
+\section{Question 4}
+
+\noindent \textbf{Question 4a}
+
+\noindent In strictly consistent, we can interleave the operation in the following way:
+
+\begin{center}
+\begin{tabular}{|c|c|}
+  \hline
+  Client & Operation \\
+  \hline
+  2      & $W(x,1)$ \\
+  2      & $W(y,1)$ \\
+  3      & (4) $R(x)\rightarrow ?$ \\
+  1      & (1) $R(y)\rightarrow ?$ \\
+  1      & $W(y,2)$ \\
+  1      & $W(x,2)$ \\
+  1      & (2) $R(y)\rightarrow ?$ \\
+  2      & (3) $R(y)\rightarrow ?$ \\
+  3      & (5) $R(x)\rightarrow ?$ \\
+  \hline
+\end{tabular}
+\end{center}
+
+\noindent As a result, the read operation will return the following values:
+\begin{itemize}
+  \item (1) 1
+  \item (2) 2
+  \item (3) 2
+  \item (4) 1
+  \item (5) 2
+\end{itemize}
+
+\noindent \textbf{Question 4b}
+
+\noindent In sequential consistency, the result of any execution is the same as if the operations by all clients were executed in some sequential order. The operation of each individual client appear in this sequence in the order specified by its program. \\
+
+\noindent The replicated shared object service can be sequentially consistent:
+
+\begin{center}
+\begin{tabular}{|c|c|}
+  \hline
+  Client & Operation \\
+  \hline
+  2      & $W(x,1)$ \\
+  2      & $W(y,2)$ \\
+  1      & $R(y)\rightarrow 2$ \\
+  1      & $W(y,1)$ \\
+  1      & $W(x,2)$ \\
+  2      & $R(x)\rightarrow 2$ \\
+  3      & $R(y)\rightarrow 1$ \\
+  \hline
+\end{tabular}
+\end{center}
+
+\noindent The read operation will return the following values:
+\begin{itemize}
+  \item (1) 2
+  \item (2) 1
+  \item (3) 2
+  \item (4) 1
+\end{itemize}
+
+\noindent \textbf{Question 4c}
+
+\noindent Synchronization delay is the delay between one process exiting the critical section and the next process entering it.\\
+
+$$\text{throughput} = \frac{1}{m+s} \text{ process / second}$$
+
+\noindent \textbf{Question 4d}
+
+\noindent A process multicasts a request every time it requires entry to the critical section. This is not necessary if a process repeatedly enters the critical section before another process needs entry. \\
+
+\noindent The key idea for improvement: when a process finishes with a critical section, it can re-enter the critical section without interacting with other processes if it has not received any request from other processes by introduced an additional state \verb|JUST_RELEASE|.
+
 \end{multicols*}
 \end{document}
