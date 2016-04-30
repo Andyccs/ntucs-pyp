@@ -1,0 +1,97 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{mathtools}
+\usepackage{minted}
+\usetikzlibrary{arrows,positioning}
+\tikzset{
+  %Define standard arrow tip
+  >=stealth',
+  % Define arrow style
+  pil/.style={
+      ->,
+      thick,
+      shorten <=2pt,
+      shorten >=2pt,}
+}
+\usepackage{geometry}
+\geometry{
+  left=2cm,
+  right=0.64cm,
+  top=0.64cm,
+  bottom=2cm
+}
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+\graphicspath{ {images/} }
+
+\begin{document}
+
+\chapter{Semester 2 Examination 2013-2014\\CZ4013 Distributed System}
+
+\begin{multicols*}{2}
+
+\section{Question 1}
+
+\noindent \textbf{Question 1a}
+
+\noindent In at-least-once invocation semantics, if a client receives a reply message, the request has been executed for one or more than one times at the server. In at-most-once invocation semantics, if a client receives a reply message, the request has been executed for exactly one time. 
+
+\noindent In at-least-once invocation semantics, when server receive a duplicate request, it will re-execute the request. In at-most-once invocation semantics, when server receive a duplicate request, it will send the previous reply again to the client.\\
+
+\noindent \textbf{Question 1b}
+
+\noindent Information given in the question:
+\begin{itemize}
+  \item Time spent in critical section by any process: $c$
+  \item Message transmission delay: $d$
+  \item Number of processes: $n$
+\end{itemize}
+
+\noindent For any algorithm, maximum throughput happens when when every process constantly wants to enter a critical section.\\
+
+\noindent For central server algorithm, the throughput is:
+$$\text{throughput}=\frac{1}{2d + c}$$
+
+\noindent For ring-based algorithm, the throughput is:
+$$\text{throughput}=\frac{1}{d + c}$$
+
+\noindent For Ricart-and-Agrawala algorithm, the throughput is:
+$$\text{throughput}=\frac{1}{d + c}$$
+
+\noindent \textbf{Question 1c i}
+
+\noindent When the freshness interval is 3 seconds, the client will only read the local cache within 3 seconds after the last validation time. If current time has passed 3 second freshness interval, the client will validation the file again with the server.\\
+
+\noindent Take note that NFS server operations are stateless and idempotent.\\
+
+\noindent Here is a list of consequences of client $A$ operations:
+\begin{enumerate}
+  \item $r_1$: Since the cache is empty, client contacts server to get latest file. Client read the local copy, which is \emph{not} the most recent update by $B$.
+  \item $r_2$: Client reads local copy of the file, which is \emph{not} the most recent update by $B$.
+  \item $r_3$: Since the file is not fresh, client contacts server to validate the file. Since the file has been updated by $B$, server transfer the latest file to client. Client then read the most recent update of the file. 
+  \item $r_4$: Client read the local copy, which is \emph{not} the most recent update by $B$.
+  \item $r_5$: Since the file is not fresh, client contacts server to validate the file. Since the file has been updated by $B$, server transfer the latest file to client. Client then read the most recent update of the file. 
+  \item $r_6$: Client read the local copy, which is \emph{not} the most recent update by $B$.
+  \item $r_7$: Since the file is not fresh, client contacts server to validate the file. Since the file has been updated by $B$, server transfer the latest file to client. Client then read the most recent update of the file. 
+  \item $r_8$: Client read the local copy, which is the most recent update by $B$.
+\end{enumerate}
+
+\noindent The time points when $A$ needs to contact the server are $r_1,r_3,r_5,r_7$.\\
+
+\noindent The read operations of $A$ that return the most recent update by $B$ are $r_3,r_5,r_7,r_8$. \\
+
+\noindent \textbf{Question 1c ii}
+
+\noindent Callback mechanism is used to maintain cache con- sistency of client side. However, if there is an update at server side before a client close a session / file, the callback has no effect on the file at currect session. \\
+
+\noindent As a result, only the read operation at $r_6,r_7,r_8$ read the most recent update by $B$. \\
+
+\noindent The time points when $A$ needs to contact the server are $r_1,r_5,r_6,r_7,r_8$.\\
+
+\end{multicols*}
+\end{document}
