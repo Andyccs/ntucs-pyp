@@ -9,21 +9,21 @@
 \usepackage{minted}
 \usetikzlibrary{arrows,positioning}
 \tikzset{
-    %Define standard arrow tip
-    >=stealth',
-    % Define arrow style
-    pil/.style={
-           ->,
-           thick,
-           shorten <=2pt,
-           shorten >=2pt,}
+  %Define standard arrow tip
+  >=stealth',
+  % Define arrow style
+  pil/.style={
+      ->,
+      thick,
+      shorten <=2pt,
+      shorten >=2pt,}
 }
 \usepackage{geometry}
 \geometry{
-    left=2cm,
-    right=0.64cm,
-    top=0.64cm,
-    bottom=2cm
+  left=2cm,
+  right=0.64cm,
+  top=0.64cm,
+  bottom=2cm
 }
 \usepackage{multicol}
 \setlength{\columnsep}{1cm}
@@ -32,9 +32,76 @@
 \begin{document}
 
 \chapter{Semester 2 Examination 2014-2015\\CZ4013 Distributed System}
+
+\section{Question 1}
+
+\noindent \textbf{Question 1a}
+\begin{minted}{Java}
+// Magazine.java
+public class Magazine {
+  public int issueNumber;
+  public String title;
+}
+
+// MagazineNotification.java
+public interface MagazineNotification implement Remote {
+  void register(Callback cbObject) throws RemoteException;
+  void deregister(Callback cbObject) throws RemoteException;
+}
+
+// ClientCallback.java
+public interface ClientCallback implement Remote {
+  void newMagazine(Magazine magazine) throws RemoteException;
+}
+\end{minted}
+
 \begin{multicols*}{2}
+\noindent \textbf{Question 1b i}
 
+\noindent The $i$-th entry in the finger table contains the first node that succeeds $n$ by at least $2^{i-1}$ on the identifier circle.
 
+\begin{center}
+\begin{tabular}{|c|c|c|}
+  \hline
+  Entry & At-least & Identifier \\ \hline
+  1     & 42 + 1   & N45        \\
+  2     & 42 + 2   & N45        \\
+  3     & 42 + 4   & N48        \\
+  4     & 42 + 8   & N62        \\
+  5     & 42 + 16  & N62        \\
+  6     & 42 + 32  & N12        \\ \hline
+\end{tabular}
+\end{center}
+
+\noindent \textbf{Question 1b ii}
+
+\noindent In routing, each node $n$ sends a query for key $k$ to the node in entry $\lfloor log_2(k-n) \rfloor + 1$. To route from N42 to $K27 \equiv 27 + 63 = K90$, we use the
+
+$$\lfloor log_2(90-42) \rfloor + 1 = 6\text{-th entry}$$
+
+\noindent Now, we are at N12. To route from N12 to K27, we use the
+
+$$\lfloor log_2(27-12) \rfloor + 1 = 4\text{-th entry}$$
+
+\noindent The 4th entry of N12 is:
+
+$$12 + 2^{4-1} = 22 \equiv \text{N22}$$
+
+\noindent Now, we are at N22. To route from N22 to K27, we use the
+
+$$\lfloor log_2(27-22) \rfloor + 1 = 3\text{-th entry}$$
+
+\noindent The 3rd entry of N22 is:
+
+$$22 + 2^{3-1} = 26 \equiv \text{N36}$$
+
+\noindent Now, we are at N36, which contains the information of K27. \\
+
+\noindent In summary, the route from N42 to K27 is N42 $\rightarrow$ N12 $\rightarrow$ N22 $\rightarrow$ N36.\\
+
+\noindent \textbf{Question 1b iii}
+
+\noindent For N36, any node added between N36 to N12 will cause it to update its finger table. For N42, any node added between N42 to N12 will cause it to update its finger table. So for both nodes to update their finger table, the new node must have an identifier between $42<n\le 63$ or $0\le n <12$.
 
 \end{multicols*}
 \end{document}
