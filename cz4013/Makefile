@@ -1,7 +1,7 @@
 all: build
 
 build-once:
-	ls | grep tex | xargs pdflatex -shell-escape -halt-on-error -interaction=nonstopmode 
+	ls | grep tex | xargs -L 1 pdflatex -shell-escape -halt-on-error -interaction=nonstopmode 
 
 build: 
 	make build-once
