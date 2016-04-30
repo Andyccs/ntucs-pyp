@@ -6,13 +6,14 @@ These LaTex documents contain the solutions of past year examination questions f
 
 CZ4013 Distributed System:
 
-- [2014-2015 Semester 2](https://github.com/Andyccs/information-retrieval-pyp/releases/download/v0.7/cz4013-14-15-2.pdf)
+- [2013-2014 Semester 2](https://github.com/Andyccs/ntucs-pyp/releases/download/v0.8/cz4013-13-14-2.pdf)
+- [2014-2015 Semester 2](https://github.com/Andyccs/ntucs-pyp/releases/download/v0.8/cz4013-14-15-2.pdf)
 
 CZ4034 Information Retrieval:
 
-- [2012-2013 Semester 2](https://github.com/Andyccs/information-retrieval-pyp/releases/download/v0.7/cz4034-12-13-2.pdf)
-- [2013-2014 Semester 2](https://github.com/Andyccs/information-retrieval-pyp/releases/download/v0.7/cz4034-13-14-2.pdf)
-- [2014-2015 Semester 2](https://github.com/Andyccs/information-retrieval-pyp/releases/download/v0.7/cz4034-14-15-2.pdf)
+- [2012-2013 Semester 2](https://github.com/Andyccs/ntucs-pyp/releases/download/v0.8/cz4034-12-13-2.pdf)
+- [2013-2014 Semester 2](https://github.com/Andyccs/ntucs-pyp/releases/download/v0.8/cz4034-13-14-2.pdf)
+- [2014-2015 Semester 2](https://github.com/Andyccs/ntucs-pyp/releases/download/v0.8/cz4034-14-15-2.pdf)
 
 ## Development
 
