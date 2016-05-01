@@ -297,7 +297,13 @@ $$t_e + (t_f - t_e) + 400 + (t_h - t_g)$$
 
 \noindent \textbf{Question 4c}
 
-\noindent [Help wanted!]\\
+\noindent Assume that $p_2$ is a perfect clock and the drift rate between $p_3$ and $p_2$ is bounded by 10 ms per second. Then the time interval between $T_h$ and $T_a$ has errors:
+
+$$\frac{|2079-t|}{t} = \frac{10\text{ms}}{1\text{s}}$$
+$$t_1 = \frac{2079}{1.01} = 2058\text{ms}$$
+$$t_2 = \frac{2079}{0.99} = 2100\text{ms}$$
+
+\noindent If $p_3$ sets its clock to $t_g - (t_h - t_g)$, then the error rate is $\pm 21ms$. Take note that the question mentioned that ``each clock is bounded by 10ms per second'', which include the clock of process $p_2$, and no perfect reference clock is given in the quesion.
 
 \noindent \textbf{Question 4d}
 
@@ -305,10 +311,8 @@ $$t_e + (t_f - t_e) + 400 + (t_h - t_g)$$
 
 \begin{itemize}
   \item $S_d, S_c, S_a$
-  \item $S_e, S_c, S_a,e\rightarrow f$
-  \item $S_e, S_f, S_a$
-  \item $S_e, S_g, S_a,g\rightarrow h$
-  \item $S_e, S_g, S_h$
+  \item $S_e, S_c, S_a, e \rightarrow f$
+  \item $S_1, S_c, S_a$
 \end{itemize}
 
 \end{multicols*}
