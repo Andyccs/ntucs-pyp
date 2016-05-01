@@ -138,7 +138,7 @@ public interface Callback
 
 \noindent Monotonic-read: If a client reads the value of a data object x, any successive read operation on x by that client will always return that same value or a more recent value.\\
 
-\noindent There is no possibility that $c=10$. Let's assume that the question is wrong and $c=12$ instead, then the value of $d$ must be equal to $12$.\\
+\noindent If $c=10$, then it means that the $write(x\leftarrow x + 2)$ has not been propagated to the replica where $write(x\leftarrow x + 10)$ was performed. So when the same client read the value again, the value could be the currect value $10$, or a more updated value $12$.
 
 \noindent \textbf{Question 2b iii}
 
@@ -207,12 +207,12 @@ $$55 + 2^{2-1} = 57 \equiv \text{N61}$$
   4     & 63       & N76        & $63\le x <76$\\
   5     & 71       & N76        & $71\le x <76$\\
   6     & 87       & N116       & $87\le x <116$\\
-  7     & 116      & N122       & $116\le x <122$\\ \hline
+  7     & 119      & N122       & $119\le x <122$\\ \hline
 \end{tabular}
 \end{center}
 
 \noindent Let $x$ be the range of possible node identifiers of new node. By combining all the ranges, the possible value of $x$ are:
-$$56\le x <61, 63\le x <76,87\le x <116,116\le x <122$$
+$$56\le x <61, 63\le x <76,87\le x <116,119\le x <122$$
 
 \noindent \textbf{Question 3b i}
 
