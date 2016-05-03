@@ -291,27 +291,27 @@ roundnode/.style={circle, draw=black, thick, minimum size=0.7cm},
 
 \noindent Since we know $t_g$ and $t_e$ and some intervals, we can know all the time at all events. To synchronize $p_3$ clock with $p_2$ clock, $p_3$ sets its clock to:
 
-$$t_g - (t_h - t_g)$$
+$$(T_h - T_a) - (T_g - T_b) = 160$$
 
-\noindent The accuracy is 100\% \\
+$$\text{set clock to: }t_g + 80$$
+
+\noindent The accuracy is $\pm 80s$ \\
 
 \noindent \textbf{Question 4b}
 
+\noindent The round trip time is:
+
+$$(2079 - 1919) + (1200 - 800) = 560$$
+
 \noindent To synchronize $p_3$ clock with $p_1$ clock, $p_3$ sets its clock to:
 
-$$t_e + (t_f - t_e) + 400 + (t_h - t_g)$$
+$$t_g + 280$$
 
-\noindent The accuracy is 100\% \\
+\noindent The accuracy is $\pm 280s$ \\
 
 \noindent \textbf{Question 4c}
 
-\noindent Assume that $p_2$ is a perfect clock and the drift rate between $p_3$ and $p_2$ is bounded by 10 ms per second. Then the time interval between $T_h$ and $T_a$ has errors:
-
-$$\frac{|2079-t|}{t} = \frac{10\text{ms}}{1\text{s}}$$
-$$t_1 = \frac{2079}{1.01} = 2058\text{ms}$$
-$$t_2 = \frac{2079}{0.99} = 2100\text{ms}$$
-
-\noindent If $p_3$ sets its clock to $t_g - (t_h - t_g)$, then the error rate is $\pm 21ms$. Take note that the question mentioned that ``each clock is bounded by 10ms per second'', which include the clock of process $p_2$, and no perfect reference clock is given in the quesion.
+\noindent When $p_3$ receives the message, the clock of $p_2$ is $[t_g, t_g + 160]$. However, there is a drift rate of 10ms/s, so the clock of $p_2$ is $[t_g, t_g + 160 + 160 \times 0.01] = [t_g, t_g + 161.6]$. $p_2$ set its clock to $t_g + 80.8$, and the accuracy is $\pm 80.8$.\\
 
 \noindent \textbf{Question 4d}
 
