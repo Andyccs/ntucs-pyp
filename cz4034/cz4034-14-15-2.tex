@@ -1,4 +1,5 @@
 \documentclass[11pt,a4paper]{report}
+
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{graphicx}
@@ -6,6 +7,8 @@
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 \usepackage{geometry}
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+
 \geometry{
     left=2cm,
     right=0.64cm,
@@ -87,14 +90,15 @@ roundnode/.style={circle, draw=black, thin},
 \noindent Answer: first we sort all vocabulary
 
 \begin{center}
-\verb|lord, love, gene, gentle, great|
+\verb|gene, gentle, great, lord, love|
 \end{center}
 
-\noindent Then, we add length of string the the front of each word
+\noindent Then, we add length of string the the front of each word. the pointer points to every 2 words, since block(k=2).
 
 \begin{center}
-\verb|4lord4love4gene6gentle5great|
-\verb|a    b    c    d      e      |
+
+\verb|4gene6gentle5great4lord4love|
+\verb|a           b          c    |
 \end{center}
 
 \noindent The data structure of the index is:
@@ -102,16 +106,33 @@ roundnode/.style={circle, draw=black, thin},
 \begin{center}
 \begin{tabular}{ | l | l | l |} 
     \hline
-    Frequency & Posting pointer & Term pointer \\
+    Frequency & Postings pointer & Term pointer \\
     \hline
-    3 & & a \\
-    3 & & \\
-    1 & & c \\
-    1 & & \\
-    2 & & e \\
+    1 & $p_1$ & a\\
+    1 & $p_2$ & \\
+    2 & $p_3$ & b\\
+    3 & $p_4$ & \\
+    3 & $p_5$ & c\\
     \hline
 \end{tabular}
 \end{center}
+
+\noindent Posting list:
+\begin{center}
+\begin{tabular}{ | l | l |} 
+    \hline
+    Postings pointer & postings \\
+    \hline
+    $p_1$ & DocB\\
+    $p_2$ & DocC\\
+    $p_3$ & DocA, DocB\\
+    $p_4$ & DocA, DocB, DocC\\
+    $p_5$ & DocA, DocB, DocC\\
+    \hline
+\end{tabular}
+\end{center}
+
+\noindent Optimisation for posting list includes recording the gaps between document ID rather than the exact document ID. 
 
 \noindent Since front coding is only applied for words with long common prefix, it does not apply in this case.\\
 
@@ -151,26 +172,57 @@ Doc2: \verb|google apple apple facebook|\\
 \end{tabular}
 \end{center}
 
+
+
+\noindent\underline{Term frequency and idf}:
+
+\begin{center}
+\begin{tabular}{|l | l | l | l | l|}
+    \hline
+    term     & $tf-doc_1$ & $tf-doc_2$ & df & idf\\
+    \hline
+    apple    & 0 & 2 & 1 & 0.3010\\
+    facebook & 1 & 1 & 2 & 0\\
+    google   & 3 & 1 & 2 & 0\\
+    \hline
+\end{tabular}
+\end{center}
+$$ idf = log(N / df) $$
+$$ N = no.of docs = 2$$
+
 \noindent \underline{For document, \textit{lnc}.}
 
 \noindent Doc1
 
 \begin{center}
-\begin{tabular}{|l | l | l | l|}
+\begin{tabular}{| l | l | l | l | l | l | l|}
     \hline
-    term     & tf & l & c \\
+    term     & tf & l & n & ln & c & lnc\\
     \hline
-    apple    & 0 & 0 & 0 \\
-    facebook & 1 & 1 & 0.561\\
-    google   & 3 & 1.477 & 0.828\\
+    apple    & 0 & 0 & 1 & 0 & 0 & 0\\
+    facebook & 1 & 1 & 1 & 1 & 0.5606 & 0.5606\\
+    google   & 3 & 1.477 & 1 & 1.477 & 0.5606 & 0.8280\\
     \hline
 \end{tabular}
+$$
+l = 1 + log(tf) $$
+$$l_1 = 1 + log(1) = 1$$
+$$l_2 = 1 + log(3) = 1.477$$
+\linebreak
+$$ w = ln $$
+$$ n = 1 $$
+$$w_1 = 1$$
+$$w_2 = 1.477 $$
+\linebreak
+$$c = 1 / \sqrt{sum(w^2)} $$
+$$c = 1/\sqrt{1^2 + 1.477^2} = 0.5606  $$
 \end{center}
 
 \noindent Doc2
 
+\todo[inline]{Update steps for calculation of doc2 for clearer explanation.}
 \begin{center}
-\begin{tabular}{|l | l | l | l|}
+\begin{tabular}{|l | l | l | l |}
     \hline
     term     & tf & l & c \\
     \hline
@@ -182,25 +234,47 @@ Doc2: \verb|google apple apple facebook|\\
 \end{center}
 
 \noindent \underline{For query, \textit{ltc}.}
-
 \begin{center}
-\begin{tabular}{|l | l | l | l | l |}
+\begin{tabular}{|l | l | l | l | l | l |l |}
     \hline
-    term     & tf & l & t & c \\
+    term     & tf & l & t & lt & c & ltc\\
     \hline
-    apple    & 1  & 1 & 0.301 & 1\\
-    facebook & 0  & 0 & 0 & 0\\
-    google   & 1  & 1 & 0 & 0 \\
+    apple    & 1 & 1 & 0.3010 & 0.3010 & 3.322 & 1\\
+    facebook & 0 & 0 & 0 & 0 & 3.322 & 0\\
+    google   & 1 & 1 & 0 & 0 & 3.322 & 0\\
     \hline
 \end{tabular}
 \end{center}
 
-\noindent The cosine similarities:
+\begin{equation*} 
+\begin{split}
+t-of-'apple' & = \log(N/df),where N = no. of doc = 2 \\
+ & = \log(2/0.4471) \\
+ & = 0.6506
+\end{split}
+\end{equation*}
+\begin{equation*}
+\begin{split}
+c &= 1 / \sqrt{sum(w^2)} \\
+  &= 1 / \sqrt{0.3010^2 + 0^2 + 0^2} \\
+  &= 3.322
+\end{split}
+\end{equation*}
 
-$$\text{cosine}(Q, doc1) = 0$$
-$$\text{cosine}(Q, doc2) = 0.677$$
+\begin{minipage}{\hsize}
+The cosine similarities:
+\begin{equation*}
+\begin{split}
+format &= (apple, facebook, google)\\
+Q &= (0.3010, 0, 0)\\
+doc1 &= (0, 0.5606 ,0.8280)\\
+doc2 &= (0.677, 0.520, 0.520)\\
+\text{cosine}(Q, doc1) &= 0\\
+\end{split}
+\end{equation*}
 
-\noindent Doc2 is ranked higher than Doc1\\
+Doc2 is ranked higher than Doc1.\\
+\end{minipage}
 
 \noindent \textbf{Question 2c} Repeat the comparison of query-document cosine similarities in Question Q2(b) with another weighting scheme of \textit{ntc.atc}
 
@@ -275,7 +349,7 @@ $$\text{netscore}(Doc2) = g(Doc2) + cosine(Doc2, Q) = 0.777$$
 \verb|Citibank| just paid a big amount of money to use your data analytics tools, in order to develop new business strategies based on the kinds of customers they have and what these customers think about \verb|Citibank| services.\\
 
 \noindent \textbf{Question 3a} They give you user-feedback data they collected and labeled between 2010 and 2014, and they ask you to categorize 2015 \verb|Citibank| user-feedback data according to the labeled data. If you were to choose between kNN and k-means for the categorization, which one would you go for? Explain why. 
-
+\todo[inline]{k-means can be used for supervised learning too. I will use both clustering algo, and evaluate using the measures such as precision, recall and f-measure. Should probably use the classifier with a high f1-measure. }
 \noindent Answer: Since this is supervised learning with labelled training data, we should use kNN. k-means clustering is an unsupervised clustering algorithm. \\
 
 \noindent \textbf{Question 3b} They wonder which knowledge representation is better to adopt in order to encode these user-feedback data in a sematic-aware format. Discuss pros and cons of the two methods of first order logic and semantic networks. 
@@ -410,7 +484,7 @@ $$P(\text{europe} \cap \text{male}) = \frac{15}{200}\cdot \frac{120}{200}=0.045$
 
 \noindent \textbf{(iii)} Your mentor now wants to employ hierarchical clustering. He thinks a top-down approach would suit the problem better. Which clustering technique would you recommend to him? Explain why. 
 
-\noindent Answer: To use top-down approach, we would split a group of students into two groups, then to four groups and so on until we satisfy. I would recommend him to use a bottom-up approach instead because that's the way human normally will do. 
+\noindent Answer: I will recommend the top-down approach. To use top-down approach, we would split a group of students into separate groups until we are satisfied. It is easier to use simple rules to split them into groups(e.g. split by gender, age, hairstyle, ..). The bottom up approach is more tedious as the mentor will have to compare 1 student to every other student at the start.  
 
 \end{multicols*}
 \end{document}
