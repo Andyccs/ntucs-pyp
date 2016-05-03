@@ -7,8 +7,6 @@
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 \usepackage{geometry}
-\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
-
 \geometry{
     left=2cm,
     right=0.64cm,
@@ -347,8 +345,8 @@ $$\text{netscore}(Doc2) = g(Doc2) + cosine(Doc2, Q) = 0.777$$
 
 \verb|Citibank| just paid a big amount of money to use your data analytics tools, in order to develop new business strategies based on the kinds of customers they have and what these customers think about \verb|Citibank| services.\\
 
-\noindent \textbf{Question 3a} They give you user-feedback data they collected and labeled between 2010 and 2014, and they ask you to categorize 2015 \verb|Citibank| user-feedback data according to the labeled data. If you were to choose between kNN and k-means for the categorization, which one would you go for? Explain why. 
-\todo[inline]{k-means can be used for supervised learning too. I will use both clustering algo, and evaluate using the measures such as precision, recall and f-measure. Should probably use the classifier with a high f1-measure. }
+\noindent \textbf{Question 3a} They give you user-feedback data they collected and labeled between 2010 and 2014, and they ask you to categorize 2015 \verb|Citibank| user-feedback data according to the labeled data. If you were to choose between kNN and k-means for the categorization, which one would you go for? Explain why.
+
 \noindent Answer: Since this is supervised learning with labelled training data, we should use kNN. k-means clustering is an unsupervised clustering algorithm. \\
 
 \noindent \textbf{Question 3b} They wonder which knowledge representation is better to adopt in order to encode these user-feedback data in a sematic-aware format. Discuss pros and cons of the two methods of first order logic and semantic networks. 
@@ -397,7 +395,7 @@ $$P(\text{SQ} | \text{card}) = \frac{P(\text{card} | \text{SQ}) P(\text{SQ})}{P(
 
 \begin{equation*}
 \begin{split}
-    Distance(d1,d2) &= \sqrt{(0.81 - 0.5)^2 + (0.93 - 0.79)^2} + (0.6 - 0)^2\\
+    \text{Distance} &= \sqrt{(0.81 - 0.5)^2 + (0.93 - 0.79)^2 + (0.6)^2}\\
     &= 0.690
 \end{split}
 \end{equation*}
