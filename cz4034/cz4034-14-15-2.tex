@@ -97,7 +97,7 @@ roundnode/.style={circle, draw=black, thin},
 
 \begin{center}
 
-\verb|4gene6gentle5great4lord4love|
+\verb| 4gene6gentle5great4lord4love|
 \verb|a           b          c    |
 \end{center}
 
@@ -132,7 +132,7 @@ roundnode/.style={circle, draw=black, thin},
 \end{tabular}
 \end{center}
 
-\noindent Optimisation for posting list includes recording the gaps between document ID rather than the exact document ID. 
+\noindent Optimisation for posting list includes recording the gaps between document ID rather than the exact document ID.\\
 
 \noindent Since front coding is only applied for words with long common prefix, it does not apply in this case.\\
 
@@ -156,7 +156,7 @@ Doc2: \verb|google apple apple facebook|\\
 
 \noindent \textbf{Question 2a} Which term in the query is more informative than the other? Explain why.
 
-\noindent Answer: \verb|apple|. The document frequency for \verb|google| is 2, which makes the $\text{idf}_{\text{google}}=0$. Without any calculation, we can say that the term \verb|google| is a common term and hence can be removed from the query. On the other hand, the term \verb|apple| does not appear in every documents, so the term contains more information. 
+\noindent Answer: \verb|apple|. The document frequency for \verb|google| is 2, which makes the $\text{idf}_{\text{google}}=0$. Without any calculation, we can say that the term \verb|google| is a common term and hence can be removed from the query. On the other hand, the term \verb|apple| does not appear in every documents, so the term contains more information.\\
 
 \noindent \textbf{Question 2b} Compare the cosine similarities of the two documents Doc1 and Doc2 to the query Q using SMART weighting scheme of \textit{lnc.ltc}. Table below shows the weighting variants of the SMART notation.
 
@@ -179,7 +179,7 @@ Doc2: \verb|google apple apple facebook|\\
 \begin{center}
 \begin{tabular}{|l | l | l | l | l|}
     \hline
-    term     & $tf-doc_1$ & $tf-doc_2$ & df & idf\\
+    term     & tf of Doc1 & tf of Doc2 & df & idf \\
     \hline
     apple    & 0 & 2 & 1 & 0.3010\\
     facebook & 1 & 1 & 2 & 0\\
@@ -188,9 +188,9 @@ Doc2: \verb|google apple apple facebook|\\
 \end{tabular}
 \end{center}
 $$ idf = log(N / df) $$
-$$ N = no.of docs = 2$$
+$$ N = \text{no. of docs} = 2$$
 
-\noindent \underline{For document, \textit{lnc}.}
+\noindent \underline{For document, \textit{lnc}.}\\
 
 \noindent Doc1
 
@@ -204,23 +204,28 @@ $$ N = no.of docs = 2$$
     google   & 3 & 1.477 & 1 & 1.477 & 0.5606 & 0.8280\\
     \hline
 \end{tabular}
-$$
-l = 1 + log(tf) $$
-$$l_1 = 1 + log(1) = 1$$
-$$l_2 = 1 + log(3) = 1.477$$
-\linebreak
-$$ w = ln $$
-$$ n = 1 $$
-$$w_1 = 1$$
-$$w_2 = 1.477 $$
-\linebreak
-$$c = 1 / \sqrt{sum(w^2)} $$
-$$c = 1/\sqrt{1^2 + 1.477^2} = 0.5606  $$
 \end{center}
 
-\noindent Doc2
+\begin{equation*}
+\begin{split}
+l                   &= 1 + log(tf)\\
+l_{\text{facebook}} &= 1 + log(1) = 1\\
+l_{\text{google}}   &= 1 + log(3) = 1.477
+\end{split}
+\end{equation*}
 
-\todo[inline]{Update steps for calculation of doc2 for clearer explanation.}
+\begin{equation*}
+\begin{split}
+n &= 1 \\
+l_{\text{facebook}} n &= 1 \\
+l_{\text{google}}n &= 1.477
+\end{split}
+\end{equation*}
+
+$$c = \frac{1}{\sqrt{1^2 + 1.477^2}} = 0.5606$$
+
+\noindent Similary, for Doc2
+
 \begin{center}
 \begin{tabular}{|l | l | l | l |}
     \hline
@@ -248,33 +253,27 @@ $$c = 1/\sqrt{1^2 + 1.477^2} = 0.5606  $$
 
 \begin{equation*} 
 \begin{split}
-t-of-'apple' & = \log(N/df),where N = no. of doc = 2 \\
- & = \log(2/0.4471) \\
- & = 0.6506
-\end{split}
-\end{equation*}
-\begin{equation*}
-\begin{split}
-c &= 1 / \sqrt{sum(w^2)} \\
-  &= 1 / \sqrt{0.3010^2 + 0^2 + 0^2} \\
+t_{\text{apple}} & = \log(N/df), \text{where }N = \text{no. of doc} = 2 \\
+& = \log(2/1) \\
+& = 0.3010 \\
+c &= \frac{1}{\sqrt{0.3010^2 + 0^2 + 0^2}} \\
   &= 3.322
 \end{split}
 \end{equation*}
 
-\begin{minipage}{\hsize}
-The cosine similarities:
+\noindent The cosine similarities:
 \begin{equation*}
 \begin{split}
 format &= (apple, facebook, google)\\
-Q &= (0.3010, 0, 0)\\
+Q &= (1, 0, 0)\\
 doc1 &= (0, 0.5606 ,0.8280)\\
 doc2 &= (0.677, 0.520, 0.520)\\
 \text{cosine}(Q, doc1) &= 0\\
+\text{cosine}(Q, doc2) &= 0.677\\
 \end{split}
 \end{equation*}
 
-Doc2 is ranked higher than Doc1.\\
-\end{minipage}
+\noindent Doc2 is ranked higher than Doc1.\\
 
 \noindent \textbf{Question 2c} Repeat the comparison of query-document cosine similarities in Question Q2(b) with another weighting scheme of \textit{ntc.atc}
 
