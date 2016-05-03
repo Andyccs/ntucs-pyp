@@ -52,7 +52,7 @@
   \item Number of processes: $n$
 \end{itemize}
 
-\noindent For any algorithm, maximum throughput happens when when every process constantly wants to enter a critical section.\\
+\noindent For central server algorithm and ring-based algorithm, maximum throughput happens when when every process constantly wants to enter a critical section.\\
 
 \noindent For central server algorithm, the throughput is:
 $$\text{throughput}=\frac{1}{2d + c}$$
@@ -60,8 +60,16 @@ $$\text{throughput}=\frac{1}{2d + c}$$
 \noindent For ring-based algorithm, the throughput is:
 $$\text{throughput}=\frac{1}{d + c}$$
 
-\noindent For Ricart-and-Agrawala algorithm, the throughput is:
+\noindent The throughput for Ricart-and-Agrawala algorithm when $c\ge d$ is:
 $$\text{throughput}=\frac{1}{d + c}$$
+
+\noindent The throughput for Ricart-and-Agrawala algorithm when $c = d$ is:
+$$\text{throughput}=\frac{1}{c + d} = \frac{1}{2d}$$
+
+\noindent The throughput for Ricart-and-Agrawala algorithm when $c < d$ is:
+$$\text{throughput}=\frac{1}{2d}$$
+
+\noindent because a process need to send a request and wait for a reply. So for Ricart-and-Agrawala algorithm, the maximum throughput is $\frac{1}{2d}$. 
 
 \noindent \textbf{Question 1c i}
 
