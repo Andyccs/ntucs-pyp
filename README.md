@@ -4,24 +4,25 @@ These LaTex documents contain the solutions of past year examination questions f
 
 # PDF Download
 
-CZ4013 Distributed System:
+All latest release can be found in the [Release Page](https://github.com/Andyccs/ntucs-pyp/releases/). 
 
-- [2013-2014 Semester 2](https://github.com/Andyccs/ntucs-pyp/releases/download/v0.10/cz4013-13-14-2.pdf)
-- [2014-2015 Semester 2](https://github.com/Andyccs/ntucs-pyp/releases/download/v0.10/cz4013-14-15-2.pdf)
-
-CZ4034 Information Retrieval:
-
-- [2012-2013 Semester 2](https://github.com/Andyccs/ntucs-pyp/releases/download/v0.10/cz4034-12-13-2.pdf)
-- [2013-2014 Semester 2](https://github.com/Andyccs/ntucs-pyp/releases/download/v0.10/cz4034-13-14-2.pdf)
-- [2014-2015 Semester 2](https://github.com/Andyccs/ntucs-pyp/releases/download/v0.10/cz4034-14-15-2.pdf)
+| Subject                     | 12-13 S2 | 13-14 S2 | 14-15 S2 |
+|-----------------------------|----------|----------|----------|
+|CZ4013 Distributed System    |✗         |✔         |✔         |
+|CZ4034 Information Retrieval |✔         |✔         |✔         |
 
 ## Development
+
+
+### Sublime Text Editor
 
 To load this project using Sublime Text 3:
 
 ```Shell
 $ subl --project ntucs-pyp.sublime-project
 ```
+
+### Build From Source
 
 If you would like to build this document from source, first you need to install TeX:
 
@@ -40,6 +41,8 @@ Once you have TeX installed, make sure that you can use `pdflatex` command in te
 $ make
 ```
 
+### Watching Changes
+
 To automatically build the PDF while editing `.tex` file, you need to install watch-cli using `npm` first:
 
 ```Shell
@@ -51,4 +54,13 @@ Then you start watching for changes:
 ```Shell
 # change the filename to the file you want
 $ watch -p "*.tex" -c "pdflatex -shell-escape -halt-on-error -interaction=nonstopmode cz4034-13-14-2.tex"
+```
+
+### Make a Release
+
+```
+git add .
+git commit -m "Message"
+git tag v<version-number>
+git push -u origin master --tags
 ```
