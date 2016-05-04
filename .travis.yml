@@ -3,11 +3,12 @@ before_install:
 install:
 - which pdflatex
 - ls -all /usr/bin | grep pdflatex
-- ls /usr/share/texlive/
-- ls /usr/share/texlive/texmf-dist/
-- ls /usr/share/texlive/texmf-dist/scripts
-- ls /usr/share/texlive/texmf-dist/scripts/texlive
-- alias tlmgr="/usr/share/texlive/texmf-dist/scripts/texlive/tlmgr.pl"
+- ls /var/lib/
+- ls /var/lib/texlive/
+- ls /var/lib/texlive/texmf-dist/
+- ls /var/lib/texlive/texmf-dist/scripts
+- ls /var/lib/texlive/texmf-dist/scripts/texlive
+- alias tlmgr="/var/lib/texlive/texmf-dist/scripts/texlive/tlmgr.pl"
 - tlmgr update --self
 - tlmgr install pygmentize
 script:
