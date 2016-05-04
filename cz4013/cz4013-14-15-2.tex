@@ -46,19 +46,19 @@ public class Magazine {
 }
 
 // MagazineNotification.java
-public interface MagazineNotification 
-    implement Remote {
-  public void register(Callback cbObject, 
-      String title) 
+public interface MagazineNotification
+    extends Remote {
+  public void register(Callback cbObject,
+      String title)
       throws RemoteException;
-  public void deregister(Callback cbObject) 
+  public void deregister(Callback cbObject)
       throws RemoteException;
 }
 
 // Callback.java
-public interface Callback 
-    implement Remote {
-  public void newMagazine(Magazine magazine) 
+public interface Callback
+    extends Remote {
+  public void newMagazine(Magazine magazine)
       throws RemoteException;
 }
 \end{minted}
@@ -215,7 +215,7 @@ $$x=44,52\le x<62, 10 \le x < 12$$
 
 \noindent As a result, only the read operation at $r_7,r_8$ read the most recent update by $B$. \\
 
-\noindent The server sends the file and a callback promise to $A$ in $r_1$. Server has sent a callback to $A$ at $u_1$ to set the callback promise to \verb|cancelled|. At $r_7$, since the callback is \verb|cancelled|, the server sends the file to $A$ again. The number of times the file is transferred from the server to $A$ is 2. 
+\noindent The server sends the file and a callback promise to $A$ in $r_1$. Server has sent a callback to $A$ at $u_1$ to set the callback promise to \verb|cancelled|. At $r_7$, since the callback is \verb|cancelled|, the server sends the file to $A$ again. The number of times the file is transferred from the server to $A$ is 2.
 
 \section{Question 3}
 
@@ -250,7 +250,7 @@ $$06:25:03.009, 2.947 = 06:25:05.956$$
 
 $$(T_4 - T_1) - (T_3 - T_2) = 00:00:01.166$$
 
-\noindent When $C$ receives $m_2$ from $S$, the time at $S$ is between: 
+\noindent When $C$ receives $m_2$ from $S$, the time at $S$ is between:
 $$[T_3, T_3 + 00:00:01.166]$$
 $$[06:25:03.009, 06:25:04.175]$$
 
