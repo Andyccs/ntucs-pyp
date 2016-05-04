@@ -1,14 +1,10 @@
 before_install:
-- sudo apt-get update && sudo apt-get install -y --no-install-recommends texlive-full texlive-latex-extra
+- sudo apt-get update && sudo apt-get install -y --no-install-recommends texlive-full texlive-latex-extra texlive-latex-base texlive-latex-recommended
 install:
 - which pdflatex
 - ls -all /usr/bin | grep pdflatex
-- ls /var/lib/
-- ls /var/lib/texlive/
-- ls /var/lib/texlive/texmf-dist/
-- ls /var/lib/texlive/texmf-dist/scripts
-- ls /var/lib/texlive/texmf-dist/scripts/texlive
-- alias tlmgr="/var/lib/texlive/texmf-dist/scripts/texlive/tlmgr.pl"
+- ls -all /var/lib/texmf/
+- alias tlmgr="/var/lib/texmf/scripts/texlive/tlmgr.pl"
 - tlmgr update --self
 - tlmgr install pygmentize
 script:
