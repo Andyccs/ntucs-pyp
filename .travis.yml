@@ -1,0 +1,24 @@
+before_install:
+- sudo apt-get update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended
+  texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended
+script:
+- mkdir _build
+- pdflatex -output-directory _build cz4013/cz4013-13-14-2.tex
+- pdflatex -output-directory _build cz4013/cz4013-14-15-2.tex
+- pdflatex -output-directory _build cz4013/cz4034-12-13-2.tex
+- pdflatex -output-directory _build cz4013/cz4034-13-14-2.tex
+- pdflatex -output-directory _build cz4013/cz4034-14-15-2.tex
+deploy:
+  provider: releases
+  api_key:
+    secure: T4xhJsjl2Iyc71uyI7r8rljvZQomy0t+1bSGElMofJr6aL4Ubkob+2kOE+nzLw8YL7qUPc7qgIiQPfvqHwcD2MWct9TfJlXLaBzBQnc3zXAZbPwzKP87vdz8V0jccBSyD2BSpNxvR0UrXlnQvuVkAddqZxwi9c2V9T17REpAjPKS1MadASRBU8fagtbQBOAF7scpy9zWVmO8ELQ+mP0UyZ7w30k2fmc/FTT+ziFhDjSV6/sSquts0J+FhHq77vK/02hToXWfoW167A4qhsrAhQ/IRMkkuKw2/xQ2s/7C7Yw/9G8tKexoe+yCGkZdwGX2Vy2OuKjLMD7Cvp7lf7c78jiqpDYicBX78cgnDKSSAz9IqsxZXX0Hpm59smR/IGRis5YG6f7KjXSIiQMRfV0SKR44nWmEGOj2xB4wrzWBwvE+I3n8RLN+5xGYjxXNWJOM6PV/K2/TKA+1ZxygGKfYWglPGqTjb7Efb5WhAN74krubKUEfNlJHLz7InATf9gIprQYdrdRaQ/7I84Zk2T7XfFbPXhTDuqpn2JaqgyJvF82WcogDaGwqLuNoWDElbnbUJkttyUxqZzaOpM0mWVLKWWMsMqDSmv5yRk7TdNSi/fbQyvdNm3zJ7QbUm2IhumnPSeUcrukYMpLYSOwgbpmFoqU1SZwrKrGhDeEm+nOJBsI=
+  file:
+  - _build/cz4013-13-14-2.tex
+  - _build/cz4013-14-15-2.tex
+  - _build/cz4034-12-13-2.tex
+  - _build/cz4034-13-14-2.tex
+  - _build/cz4034-14-15-2.tex
+  skip_cleanup: true
+  on:
+    repo: Andyccs/ntucs-pyp
+    tags: true
