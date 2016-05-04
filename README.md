@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Andyccs/ntucs-pyp.svg?branch=master)](https://travis-ci.org/Andyccs/ntucs-pyp)
+
 # NTU Computer Science Past Year Paper Solutions
 
 These LaTex documents contain the solutions of past year examination questions for Computer Science courses offered by School of Computer Science and Engineering, Nanyang Technological University, Singapore. 
@@ -57,6 +59,8 @@ $ watch -p "*.tex" -c "pdflatex -shell-escape -halt-on-error -interaction=nonsto
 ```
 
 ### Make a Release
+
+By tagging a commit, the commit will be build by Travis CI. All PDF files will be uploaded to the release page.
 
 ```
 git add .
