@@ -1,4 +1,4 @@
-# Information Retrieval PYP Contributors
+# NTU Computer Science Past Year Paper Solution Contributors
 
 All lists are sorted alphabeticaly.
 
@@ -8,6 +8,6 @@ Main author:
 
 Reviewer:
 
+- [Kavan](https://github.com/kklw)
 - [liuzhanqi](https://github.com/liuzhanqi)
 - [Salihan](https://github.com/Salihan04)
-- [Kavan](https://github.com/kklw)

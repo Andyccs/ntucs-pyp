@@ -1,4 +1,4 @@
-# NTU Computer Science PYP
+# NTU Computer Science Past Year Paper Solutions
 
 These LaTex documents contain the solutions of past year examination questions for Computer Science courses offered by School of Computer Science and Engineering, Nanyang Technological University, Singapore. 
 
