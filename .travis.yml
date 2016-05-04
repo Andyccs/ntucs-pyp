@@ -1,6 +1,5 @@
 before_install:
-- sudo apt-get update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended
-  texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended
+- sudo apt-get update && sudo apt-get install -y --no-install-recommends texlive-full
 script:
 - mkdir _build
 - pdflatex -shell-escape -halt-on-error -interaction=nonstopmode cz4013/cz4013-13-14-2.tex
