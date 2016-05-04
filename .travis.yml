@@ -2,9 +2,12 @@ before_install:
 - sudo apt-get update && sudo apt-get install -y --no-install-recommends texlive-full texlive-latex-extra
 install:
 - which pdflatex
-- ls /usr/local/texlive/2011/bin/
-- ls /usr/local/texlive/2011/bin/x86_64-linux
-- export PATH=/usr/local/texlive/2011/bin/x86_64-linux:$PATH
+- ls -all /usr/bin | grep pdflatex
+- ls /usr/share/texlive/
+- ls /usr/share/texlive/texmf-dist/
+- ls /usr/share/texlive/texmf-dist/scripts
+- ls /usr/share/texlive/texmf-dist/scripts/texlive
+- alias tlmgr="/usr/share/texlive/texmf-dist/scripts/texlive/tlmgr.pl"
 - tlmgr update --self
 - tlmgr install pygmentize
 script:
