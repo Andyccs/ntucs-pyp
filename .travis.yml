@@ -1,6 +1,8 @@
 before_install:
-- sudo pip install Pygments
 - sudo apt-get update && sudo apt-get install -y --no-install-recommends texlive-full texlive-latex-extra
+install:
+- tlmgr update --self
+- tlmgr install pygmentize
 script:
 - pdflatex -shell-escape -halt-on-error -interaction=nonstopmode cz4013/cz4013-13-14-2.tex
 - pdflatex -shell-escape -halt-on-error -interaction=nonstopmode cz4013/cz4013-14-15-2.tex
