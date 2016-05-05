@@ -1,6 +1,7 @@
 before_install:
 - wget https://github.com/scottkosty/install-tl-ubuntu/raw/master/install-tl-ubuntu && chmod +x ./install-tl-ubuntu
 - sudo ./install-tl-ubuntu
+- sudo chmod 777 /usr/local/texlive/2015/tlpkg/
 install:
 - /opt/texbin/tlmgr install pygmentize
 script:
