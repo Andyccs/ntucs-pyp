@@ -1,11 +1,6 @@
 before_install:
-- sudo apt-get update && sudo apt-get install -y --no-install-recommends texlive-full texlive-latex-extra texlive-latex-base texlive-latex-recommended
+- wget https://github.com/scottkosty/install-tl-ubuntu/raw/master/install-tl-ubuntu && chmod +x ./install-tl-ubuntu
 install:
-- which pdflatex
-- ls -all /usr/bin | grep pdflatex
-- whereis texlive
-- which texlive
-- alias tlmgr="/var/lib/texmf/scripts/texlive/tlmgr.pl"
 - tlmgr update --self
 - tlmgr install pygmentize
 script:
