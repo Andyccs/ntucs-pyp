@@ -1,9 +1,7 @@
 before_install:
 - wget https://github.com/scottkosty/install-tl-ubuntu/raw/master/install-tl-ubuntu && chmod +x ./install-tl-ubuntu
 - sudo ./install-tl-ubuntu
-- ls -all /opt/texbin/
 install:
-- /opt/texbin/tlmgr update --self
 - /opt/texbin/tlmgr install pygmentize
 script:
 - pdflatex -shell-escape -halt-on-error -interaction=nonstopmode cz4013/cz4013-13-14-2.tex
