@@ -314,6 +314,100 @@ $x_3$                            & 3.7400                           & 0      \\ 
 
 \end{tikzpicture}
 
+\noindent \textbf{Question 3d}
+\noindent [Help wanted!]\\
+
+\section{Question 4}
+
+\noindent \textbf{Question 4a}
+\noindent [Copied and pasted from lecture notes] Steps:
+\begin{itemize}
+\item Train C1 with dataset D1
+\item Test C1 with dataset D2
+\item Find error samples and an equal amount of correct samples and form D3
+\item Train C2 with dataset D3
+\item Find error samples and equal amount of correct samples and form D4
+\item Train C1and C2 with dataset D4
+\item Find errors and equal number of correct samples and form D5
+\item Train C3 with D5...
+\end{itemize}
+
+\noindent \textbf{Question 4b}
+\noindent [Help wanted!]\\
+
+\noindent \textbf{Question 4c i}
+
+\begin{equation*}
+\begin{split}
+P(A) &= \sum_{B,E} P(A,B,E)\\
+     &= \sum_{B,E} P(A | B,E) P(B,E)\\
+     &= \sum_{B,E} P(A | B,E) P(B) P(E)\\
+     &=       P(A |      B,     E) P(     B) P(     E) +\\
+     &\ \ \ \ P(A |      B,\sim E) P(     B) P(\sim E) +\\
+     &\ \ \ \ P(A | \sim B,     E) P(\sim B) P(     E) +\\
+     &\ \ \ \ P(A | \sim B,\sim E) P(\sim B) P(\sim E)\\
+     &=       0.95 \times 0.01 \times 0.02 +\\
+     &\ \ \ \ 0.90 \times 0.01 \times 0.98 +\\
+     &\ \ \ \ 0.25 \times 0.99 \times 0.02 +\\
+     &\ \ \ \ 0.01 \times 0.99 \times 0.98  \\
+     &= 0.02366\\
+P(\sim A) &= 0.9763
+\end{split}
+\end{equation*}
+
+\noindent \textbf{Question 4c ii}
+
+\begin{equation*}
+\begin{split}
+P(S) &= \sum_{A} P(S,A)\\
+     &= \sum_{A} P(S|A)P(A)\\
+     &=      P(S|     A)P(     A) +\\
+     &\ \ \ \ P(S|\sim A)P(\sim A)\\
+     &= 0.70 \times 0.02366 + 0.05 \times 0.9763\\
+     &= 0.06538
+\end{split}
+\end{equation*}
+
+\noindent \textbf{Question 4c iii}
+
+\begin{equation*}
+\begin{split}
+P(S|B) &= \sum_{A} P(S,A|B)\\
+       &= \sum_{A} \frac{P(S,A,B)}{P(B)}\\
+       &= \sum_{A} \frac{P(S|A,B)P(A,B)}{P(B)}\\
+       &= \sum_{A} \frac{P(S|A,B)P(A|B)P(B)}{P(B)}\\
+       &= \sum_{A} P(S|A,B)P(A|B)\\
+       &= \sum_{A} P(S|A)P(A|B)\\
+       &=      P(S|     A)P(     A|B)+\\
+       &\ \ \ \ P(S|\sim A)P(\sim A|B)\\
+       &= 0.70 \times P(A|B) + 0.05 \times P(\sim A|B)\\
+\end{split}
+\end{equation*}
+
+\begin{equation*}
+\begin{split}
+P(A|B)      &= \sum_{E} P(A,E|B)\\
+            &= \sum_{E} \frac{P(A,E,B)}{P(B)}\\
+            &= \sum_{E} \frac{P(A|E,B)P(E,B)}{P(B)}\\
+            &= \sum_{E} \frac{P(A|E,B)P(E)P(B)}{P(B)}\\
+            &= \sum_{E} P(A|E,B)P(E)\\
+            &= P(A|E,B)P(E) + P(A|\sim E,B)P(\sim E)\\
+            &= 0.95 \times 0.02 + 0.90 \times 0.98\\
+            &= 0.901\\
+P(\sim A|B) &= 0.099\\
+P(S|B)      &= 0.70 \times 0.901 + 0.05 \times 0.099\\
+            &= 0.6357
+\end{split}
+\end{equation*}
+
+\begin{equation*}
+\begin{split}
+P(B|S) &= \frac{P(S|B)P(B)}{P(S)}\\
+       &= \frac{0.6357 \times 0.01}{0.06538}\\
+       &= 0.09723
+\end{split}
+\end{equation*}
+
 
 \end{multicols*}
 \end{document}
