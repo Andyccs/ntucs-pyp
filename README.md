@@ -8,10 +8,11 @@ These LaTex documents contain the solutions of past year examination questions f
 
 All latest release can be found in the [Release Page](https://github.com/Andyccs/ntucs-pyp/releases/). 
 
-| Subject                     | 12-13 S2 | 13-14 S2 | 14-15 S2 |
-|-----------------------------|----------|----------|----------|
-|CZ4013 Distributed System    |✗         |✔         |✔         |
-|CZ4034 Information Retrieval |✔         |✔         |✔         |
+| Subject                     | 12-13 S2 | 13-14 S2 | 14-15 S2 | 15-16 S2 |
+|-----------------------------|----------|----------|----------|----------|
+|CZ4013 Distributed System    |✗         |✔         |✔         |✗         |
+|CZ4034 Information Retrieval |✔         |✔         |✔         |✗         |
+|CZ4041 Machine Learning      |✗         |✗         |✗         |✔         |
 
 ## Development
 
