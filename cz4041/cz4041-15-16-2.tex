@@ -210,5 +210,35 @@ table[meta=label] {
 
 \section{Question 3}
 
+\noindent \textbf{Question 3a}
+
+\noindent If we discard the last eigenvector to reduce the dimension to 2:
+
+$$\text{POV} = \frac{9.78 + 2.11}{9.78 + 2.11 + 0.11} = 0.991$$
+
+\noindent If we discard the last eigenvector to reduce the dimension to 1:
+
+$$\text{POV} = \frac{9.78}{9.78 + 2.11 + 0.11} = 0.815$$
+
+\noindent \textbf{Question 3b}
+
+$$z = U_{\text{reduce}} x^{T}$$
+$$U_{\text{reduce}} = \begin{bmatrix}
+0.78 & -0.54 & 0.32 \\
+0.04 & 0.56 & 0.83
+\end{bmatrix}$$
+
+\begin{center}
+\begin{tabular}{| c | c | c |}
+\hline
+Data  & Original    & Reduced\\ \hline
+$x_1$ & $(2,0,2)$   & $(2.20,1.74)$   \\
+$x_2$ & $(-1,0,-1)$ & $(-1.10,0.87)$  \\
+$x_3$ & $(3,-3,0)$  & $(3.96,-1.56)$  \\
+$x_4$ & $(-3,2,-2)$ & $(-4.06,-0.66)$ \\
+$x_5$ & $(-1,1,1)$  & $(-1.00,1.35)$  \\ \hline
+\end{tabular}
+\end{center}
+
 \end{multicols*}
 \end{document}
