@@ -1,14 +1,11 @@
+sudo: required
+services:
+- docker
 before_install:
-- wget https://github.com/scottkosty/install-tl-ubuntu/raw/master/install-tl-ubuntu && chmod +x ./install-tl-ubuntu
-- sudo ./install-tl-ubuntu
-- sudo chmod 777 /usr/local/texlive/2015/tlpkg/
-- source /etc/environment
+- docker pull blang/latex
+- curl -O https://raw.githubusercontent.com/blang/latex-docker/master/dockercmd.sh && chmod +x ./dockercmd.sh
 script:
-- pdflatex -shell-escape -halt-on-error -interaction=nonstopmode cz4013/cz4013-13-14-2.tex
-- pdflatex -shell-escape -halt-on-error -interaction=nonstopmode cz4013/cz4013-14-15-2.tex
-- pdflatex -shell-escape -halt-on-error -interaction=nonstopmode cz4034/cz4034-12-13-2.tex
-- pdflatex -shell-escape -halt-on-error -interaction=nonstopmode cz4034/cz4034-13-14-2.tex
-- pdflatex -shell-escape -halt-on-error -interaction=nonstopmode cz4034/cz4034-14-15-2.tex
+- find . -type f | grep "\.tex" | xargs -L 1 ./dockercmd.sh pdflatex -shell-escape -halt-on-error -interaction=nonstopmode 
 deploy:
   provider: releases
   api_key:
