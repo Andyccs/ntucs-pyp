@@ -57,10 +57,38 @@ P(\sim D|T_1 T_2) &= \frac{P(T_1 | \sim D) P(T_2 | \sim D) P(\sim D)}{P(T_1 T_2)
 
 \noindent Let action $a_1$ be the action predicting the patient to have the disease, and action $a_2$ be the action predicting the patient to not have the disease.
 
-$$R(a_1|T_1 T_2) = 1 - P(\sim D | T_1 T_2)$$
-$$R(a_2|T_1 T_2) = 1 - P(D | T_1 T_2)$$
+$$R(a_1|T_1 T_2) = 1 - P( D | T_1 T_2)$$
+$$R(a_2|T_1 T_2) = 1 - P( \sim D | T_1 T_2)$$
 
-\noindent We choose the action with minimum risk. Since $P(\sim D|T_1 T_2) > P(D|T_1 T_2)$, thus $R(a_2|T_1 T_2) < R(a_1|T_1 T_2)$, so the action $a_2$ has lower risk. As a result, we predict that the patient does not have the disease.
+\noindent We choose the action with minimum risk. Since $P(\sim D|T_1 T_2) > P(D|T_1 T_2)$, thus $R(a_2|T_1 T_2) < R(a_1|T_1 T_2)$, so the action $a_2$ has lower risk. As a result, we predict that the patient does not have the disease.\\
+
+\noindent \textbf{Question 1c}
+
+\noindent Information given in the question:
+\begin{itemize}
+  \item $\lambda_{12} = 0.05$
+  \item $\lambda_{21} = 1$
+\end{itemize}
+
+\noindent Where $\lambda_{12}$ is the lost occur when the action is predict the patient to have disease $a_1$, but the ground truth is the patient do not have the disease $\sim D$. The lost $\lambda_{21}$ is defined in similar way. The risks are:
+
+\begin{equation*}
+\begin{split}
+R(a_1|T_1 T_2) &= \lambda_{12} P(\sim D | T_1 T_2)\\
+&= 0.05 \times \frac{0.999 \times 10^{-3}}{P(T_1 T_2)}\\
+&= \frac{0.4995 \times 10^{-3}}{P(T_1 T_2)}
+\end{split}
+\end{equation*}
+
+\begin{equation*}
+\begin{split}
+R(a_2|T_1 T_2) &= \lambda_{21} P( D | T_1 T_2)\\
+&= 1 \times \frac{0.855 \times 10^{-3}}{P(T_1 T_2)}\\
+&= \frac{0.855 \times 10^{-3}}{P(T_1 T_2)}\\
+\end{split}
+\end{equation*}
+
+\noindent Since $R(a_1|T_1 T_2) < R(a_2|T_1 T_2)$, we predict that the patient has the disease.
 
 \end{multicols*} 
 \end{document}
