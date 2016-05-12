@@ -90,5 +90,61 @@ R(a_2|T_1 T_2) &= \lambda_{21} P( D | T_1 T_2)\\
 
 \noindent Since $R(a_1|T_1 T_2) < R(a_2|T_1 T_2)$, we predict that the patient has the disease.
 
+\section{Question 2}
+\noindent \textbf{Question 2a}
+
+\noindent We define the inputs to Hidden Layer as:
+
+$$X = \begin{bmatrix} X_1 \\ X_2 \end{bmatrix}$$
+
+\noindent The weight from Input Layer to Hidden Layer is:
+
+$$W = 
+\begin{bmatrix} 
+w_{13} & w_{23} \\
+w_{14} & w_{24}
+\end{bmatrix}$$
+
+\noindent The activation function is:
+
+$$
+f(u) = 
+\begin{cases}
+1 & u \ge 0\\
+-1 & u < 0
+\end{cases}
+$$
+
+\noindent The output of the Hidden Layer (which is also the input to Output Layer) is:
+
+$$Z = f(W X)$$
+
+\noindent The weight from Hidden Layer to Output Layer is:
+
+$$V = 
+\begin{bmatrix} 
+w_{35} & w_{45}
+\end{bmatrix}$$
+
+\noindent The output of Output Layer is:
+
+$$y = f(V Z)$$
+
+\noindent For each $X$, we calculate $y$:
+
+\begin{center}
+\begin{tabular}{|c | c | c | c |}
+\hline
+$X_1$ & $X_2$  & $y$ & Predict \\ \hline
+2     & -0.5   & 1   & +       \\
+1     & 1      & 1   & -       \\
+3     & 1      & 1   & -       \\
+2     & -2     & -1  & +       \\
+1.5   & 2      & 1   & -       \\ \hline
+\end{tabular}
+\end{center}
+
+\noindent The error rate is $80\%$.
+
 \end{multicols*} 
 \end{document}
