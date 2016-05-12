@@ -2,11 +2,11 @@
 
 # NTU Computer Science Past Year Paper Solutions
 
-These LaTex documents contain the solutions of past year examination questions for Computer Science courses offered by School of Computer Science and Engineering, Nanyang Technological University, Singapore. 
+These LaTex documents contain the solutions of past year examination questions for Computer Science courses offered by School of Computer Science and Engineering, Nanyang Technological University, Singapore.
 
 # PDF Download
 
-All latest release can be found in the [Release Page](https://github.com/Andyccs/ntucs-pyp/releases/). 
+All latest release can be found in the [Release Page](https://github.com/Andyccs/ntucs-pyp/releases/).
 
 | Subject                     | 12-13 S2 | 13-14 S2 | 14-15 S2 | 15-16 S2 |
 |-----------------------------|----------|----------|----------|----------|
@@ -55,7 +55,7 @@ $ curl -O https://raw.githubusercontent.com/blang/latex-docker/master/dockercmd.
 $ ./dockercmd.sh pdflatex -shell-escape -halt-on-error -interaction=nonstopmode example.tex
 
 # Build all .tex files
-$ find . -type f | grep "\.tex" | xargs -L 1 ./dockercmd.sh pdflatex -shell-escape -halt-on-error -interaction=nonstopmode 
+$ find . -type f | grep "\.tex" | xargs -L 1 ./dockercmd.sh pdflatex -shell-escape -halt-on-error -interaction=nonstopmode
 ```
 
 ### Watching Changes
@@ -78,8 +78,8 @@ $ watch -p "*.tex" -c "pdflatex -shell-escape -halt-on-error -interaction=nonsto
 By tagging a commit, the commit will be build by Travis CI. All PDF files will be uploaded to the release page.
 
 ```
-git add .
-git commit -m "Message"
-git tag v<version-number>
-git push -u origin master --tags
+$ git add .
+$ git commit -m "Message"
+$ git tag v<version-number>
+$ git push -u origin master --tags
 ```
