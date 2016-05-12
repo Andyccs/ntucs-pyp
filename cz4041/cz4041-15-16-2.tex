@@ -1,0 +1,66 @@
+\documentclass[11pt,a4paper]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{geometry}
+\geometry{
+    left=2cm,
+    right=0.64cm,
+    top=0.64cm,
+    bottom=2cm
+}
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+\graphicspath{ {images/} }
+
+\begin{document}
+
+\chapter{Semester 2 Examination 2015-2016\\CZ4041 Machine Learning}
+
+\begin{multicols*}{2}
+
+\section{Question 1}
+\noindent \textbf{Question 1a}
+\noindent Information given in the question:
+\begin{itemize}
+  \item $P(D) = 0.001$
+  \item $P(\sim D) = 0.999$
+  \item $P(T_1|D) = 0.9$
+  \item $P(T_2|D) = 0.95$
+  \item $P(T_1|\sim D) = 0.01$
+  \item $P(T_2|\sim D) = 0.1$
+\end{itemize}
+
+\begin{equation*}
+\begin{split}
+P(D|T_1 T_2) &= \frac{P(T_1 | D) P(T_2 | D) P(D)}{P(T_1 T_2)}\\
+&= \frac{0.9 \times 0.95 \times 0.001}{P(T_1 T_2)}\\
+&= \frac{0.855 \times 10^{-3}}{P(T_1 T_2)}
+\end{split}
+\end{equation*}
+
+\begin{equation*}
+\begin{split}
+P(\sim D|T_1 T_2) &= \frac{P(T_1 | \sim D) P(T_2 | \sim D) P(\sim D)}{P(T_1 T_2)}\\
+&= \frac{0.01 \times 0.1 \times 0.999}{P(T_1 T_2)}\\
+&= \frac{0.999 \times 10^{-3}}{P(T_1 T_2)}
+\end{split}
+\end{equation*}
+
+\noindent Since $P(\sim D|T_1 T_2) > P(D|T_1 T_2)$, we predict that the patient does not have the disease.\\
+
+\noindent \textbf{Question 1b}
+
+\noindent Let action $a_1$ be the action predicting the patient to have the disease, and action $a_2$ be the action predicting the patient to not have the disease.
+
+$$R(a_1|T_1 T_2) = 1 - P(\sim D | T_1 T_2)$$
+$$R(a_2|T_1 T_2) = 1 - P(D | T_1 T_2)$$
+
+\noindent We choose the action with minimum risk. Since $P(\sim D|T_1 T_2) > P(D|T_1 T_2)$, thus $R(a_2|T_1 T_2) < R(a_1|T_1 T_2)$, so the action $a_2$ has lower risk. As a result, we predict that the patient does not have the disease.
+
+\end{multicols*} 
+\end{document}

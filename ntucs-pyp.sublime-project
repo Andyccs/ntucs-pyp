@@ -12,6 +12,11 @@
       "folder_exclude_patterns": ["_minted-*"],
     },
     {
+      "path": "cz4041",
+      "file_exclude_patterns": ["*.aux", "*.log", "*.toc"],
+      "folder_exclude_patterns": ["_minted-*"],
+    },
+    {
       "path": ".",
       "folder_exclude_patterns": ["cz*"],
     }
