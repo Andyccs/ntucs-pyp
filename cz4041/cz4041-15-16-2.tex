@@ -240,5 +240,80 @@ $x_5$ & $(-1,1,1)$  & $(-1.00,1.35)$  \\ \hline
 \end{tabular}
 \end{center}
 
+\noindent \textbf{Question 3c}
+
+\begin{center}
+\begin{tabular}{| c | c  c  c  c  c |} \hline
+      & $x_1$  & $x_2$   & $x_3$  & $x_4$  & $x_5$   \\ \hline
+$x_1$ & 0      & 3.4128  & 3.7400 & 6.7043 & 3.2237  \\
+$x_2$ & 3.4128 & 0       & 5.6132 & 3.3320 & 0.49031 \\
+$x_3$ & 3.7400 & 5.6132  & 0      & 8.0703 & 5.7506  \\
+$x_4$ & 6.7043 & 3.3320  & 8.0703 & 0      & 3.6611  \\
+$x_5$ & 3.2237 & 0.49031 & 5.7506 & 3.6611 & 0       \\ \hline
+\end{tabular}
+\end{center}
+
+\noindent We merge $x_2$ and $x_5$:
+
+\begin{center}
+\begin{tabular}{| c | c  c  c  c  |} \hline
+               & $x_2 \cap x_5$  & $x_1$   & $x_3$  & $x_4$  \\ \hline
+$x_2 \cap x_5$ & 0               & 3.2237  & 5.6132 & 3.3320 \\
+$x_1$          & 3.2237          & 0       & 3.7400 & 6.7043 \\
+$x_3$          & 5.6132          & 3.7400  & 0      & 8.0703 \\
+$x_4$          & 3.3320          & 6.7043  & 8.0703 & 0      \\ \hline
+\end{tabular}
+\end{center}
+
+\noindent We merge $x_2 \cap x_5$ with $x_1$:
+
+\begin{center}
+\begin{tabular}{| c | c  c  c |} \hline
+                        & $x_2 \cap x_5 \cap x_1$ & $x_3$  & $x_4$  \\ \hline
+$x_2 \cap x_5 \cap x_1$ & 0                       & 3.7400 & 3.3320 \\
+$x_3$                   & 3.7400                  & 0      & 8.0703 \\
+$x_4$                   & 3.3320                  & 8.0703 & 0      \\ \hline
+\end{tabular}
+\end{center}
+
+\noindent We merge $x_2 \cap x_5 \cap x_1$ with $x_4$:
+
+
+\begin{center}
+\begin{tabular}{| c | c  c |} \hline
+                                 & $x_2 \cap x_5 \cap x_1 \cap x_4$ & $x_3$  \\ \hline
+$x_2 \cap x_5 \cap x_1 \cap x_4$ & 0                                & 3.7400 \\
+$x_3$                            & 3.7400                           & 0      \\ \hline
+\end{tabular}
+\end{center}
+
+\noindent Finally we merge $x_3$ to $x_2 \cap x_5 \cap x_1 \cap x_4$.
+
+\begin{tikzpicture}[sloped]
+\node (a) at (0,0) {a};
+\node (b) at (1,0) {b};
+\node (c) at (2,0) {c};
+\node (d) at (3,0) {d};
+\node (e) at (4,0) {e};
+\node (dummy) at (3.5,5) {};
+
+\node (ab)    at (0.5,0.4903) {};
+\node (abc)   at (1.5,3.00) {}; % change the value abit from 3.22
+\node (abcd)  at (2.5,3.30) {};
+\node (abcde) at (3.5,3.74) {};
+
+\draw  (a)    |- (ab.center);
+\draw  (b)    |- (ab.center);
+\draw  (ab)   |- (abc.center);
+\draw  (c)    |- (abc.center);
+\draw  (abc)  |- (abcd.center);
+\draw  (d)    |- (abcd.center);
+\draw  (abcd) |- (abcde.center);
+\draw  (e)    |- (abcde.center);
+\draw (abcde) |- (dummy.center);
+
+\end{tikzpicture}
+
+
 \end{multicols*}
 \end{document}
