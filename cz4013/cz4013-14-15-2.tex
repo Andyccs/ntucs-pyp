@@ -6,7 +6,7 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{mathtools}
-\usepackage{minted}
+\usepackage{listings}
 \usetikzlibrary{arrows,positioning}
 \tikzset{
   %Define standard arrow tip
@@ -38,7 +38,8 @@
 \section{Question 1}
 
 \noindent \textbf{Question 1a}
-\begin{minted}{Java}
+\footnotesize
+\begin{lstlisting}[language=Java]
 // Magazine.java
 public class Magazine {
   public int issueNumber;
@@ -61,7 +62,8 @@ public interface Callback
   public void newMagazine(Magazine magazine)
       throws RemoteException;
 }
-\end{minted}
+\end{lstlisting}
+\normalsize
 
 \noindent \textbf{Question 1b i}
 

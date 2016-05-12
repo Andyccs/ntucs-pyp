@@ -3,10 +3,10 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{gensymb}
+\usepackage{listings}
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{mathtools}
-\usepackage{minted}
 \usetikzlibrary{arrows,positioning}
 \tikzset{
     %Define standard arrow tip
@@ -81,11 +81,11 @@
 
 \noindent Answer: since the boolean expression is equivalent to \verb|NOT( X OR Y )|, the algorithm:
 
-\begin{minted}{text}
+\begin{lstlisting}
 define ALL_DATA
 XY = Merge X and Y without duplication
 Remove elements of XY from ALL_DATA
-\end{minted}
+\end{lstlisting}
 
 \noindent Note: the real answer should be longer than this, specifically, the last steps need to elaboration. \\
 
@@ -147,13 +147,13 @@ $$\text{SE2, Precision@4}=1/4$$
 
 \noindent \textbf{Question 2c} Consider the following XML fragment:
 
-\begin{minted}{xml}
+\begin{lstlisting}[language=XML]
 <person>
     <firstname>John Middle</firstname>
     <lastname>Doe</lastname>
     <email>john.doe@gmail.com</email>
 </person>
-\end{minted}
+\end{lstlisting}
 
 \noindent \textbf{(i)} Enumerate \underline{all} structural terms for this XML fragment by fillling in table below. Apply case-folding and punctuation-removal, using a word as the base unit. The first three structural terms have been enumerated for you
 

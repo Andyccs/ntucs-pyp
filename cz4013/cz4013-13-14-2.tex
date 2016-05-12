@@ -6,7 +6,7 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{mathtools}
-\usepackage{minted}
+\usepackage{listings}
 \usetikzlibrary{arrows,positioning}
 \tikzset{
   %Define standard arrow tip
@@ -105,7 +105,8 @@ $$\text{throughput}=\frac{1}{2d}$$
 
 \noindent \textbf{Question 2a}
 
-\begin{minted}{Java}
+\footnotesize
+\begin{lstlisting}[language=Java]
 // StockNotification.java
 public interface StockNotification 
     implements Remote {
@@ -122,7 +123,8 @@ public interface Callback
   public void stockAlert(String companyName) 
       throws RemoteException;
 }
-\end{minted}
+\end{lstlisting}
+\normalsize
 
 \noindent \textbf{Question 2b i}
 
