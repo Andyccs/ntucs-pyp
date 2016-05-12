@@ -5,6 +5,7 @@
 \usepackage{graphicx}
 \usepackage{gensymb}
 \usepackage{tikz}
+\usepackage{pgfplots}
 \usetikzlibrary{positioning}
 \usepackage{geometry}
 \geometry{
@@ -99,8 +100,8 @@ $$X = \begin{bmatrix} X_1 \\ X_2 \end{bmatrix}$$
 
 \noindent The weight from Input Layer to Hidden Layer is:
 
-$$W = 
-\begin{bmatrix} 
+$$W =
+\begin{bmatrix}
 w_{13} & w_{23} \\
 w_{14} & w_{24}
 \end{bmatrix}$$
@@ -108,7 +109,7 @@ w_{14} & w_{24}
 \noindent The activation function is:
 
 $$
-f(u) = 
+f(u) =
 \begin{cases}
 1 & u \ge 0\\
 -1 & u < 0
@@ -121,8 +122,8 @@ $$Z = f(W X)$$
 
 \noindent The weight from Hidden Layer to Output Layer is:
 
-$$V = 
-\begin{bmatrix} 
+$$V =
+\begin{bmatrix}
 w_{35} & w_{45}
 \end{bmatrix}$$
 
@@ -144,7 +145,70 @@ $X_1$ & $X_2$  & $y$ & Predict \\ \hline
 \end{tabular}
 \end{center}
 
-\noindent The error rate is $80\%$.
+\noindent The error rate is $80\%$.\\
 
-\end{multicols*} 
+\noindent \textbf{Question 2b}
+
+\noindent We define $X$ as:
+
+$$X =
+\begin{bmatrix}
+2 & -0.5 \\
+1 & 1 \\
+3 & 1 \\
+2 & -2 \\
+1.5 & 2
+\end{bmatrix}$$
+
+\noindent The pairwise inner products between the five data points is:
+
+$$X X^{T} =
+\begin{bmatrix}
+4.25 & 1.50 &  5.50 &  5.00  &  2.00\\
+1.50 & 2.00 &  4.00 &  0.00  &  3.50\\
+5.50 & 4.00 & 10.00 &  4.00  &  6.50\\
+5.00 & 0.00 &  4.00 &  8.00  & -1.00\\
+2.00 & 3.50 &  6.50 & -1.00  &  6.25
+\end{bmatrix}$$
+
+\noindent \textbf{Question 2c}
+
+\begin{tikzpicture}
+\begin{axis}[
+    enlargelimits=false,
+    axis equal
+]
+\addplot+[
+    nodes near coords,
+    only marks,
+    point meta=explicit symbolic
+]
+table[meta=label] {
+    x   y   label
+    2  -0.5 ID1
+    1   1   ID2
+    3   1   ID3
+    2  -2   ID4
+    1.5 2   ID5
+    7   4   ID6
+    5   0.2 Q2d
+};
+\addplot [
+    domain=0:7,
+    samples=2,
+    color=red,
+]
+{0.25};
+\end{axis}
+\end{tikzpicture}
+
+\noindent The decision boundary is $y=0.25$.\\
+
+\noindent \textbf{Question 2d}
+
+\noindent Predict the test data point to be + class.
+
+\section{Question 3}
+
+\end{multicols*}
 \end{document}

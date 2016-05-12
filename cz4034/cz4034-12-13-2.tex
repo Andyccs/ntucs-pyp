@@ -39,7 +39,7 @@
 \noindent \textbf{Question 1a} Write down the expanded biagram and permuterm queries for the following queries by filling in line 3 onwards in table below. Follow the example shown in the second row of the table.
 
 \begin{center}
-\begin{tabular}{| l | l | l | l |} 
+\begin{tabular}{| l | l | l | l |}
     \hline
     Part      & Wilcard Query & Bigrams    & Permuterms \\
     \hline
@@ -59,7 +59,7 @@
 
 \noindent \textbf{(i)} Name two advantages of permuterm over bigram
 
-\noindent Advantage 1: Permuterm is more efficient than bigram, for example, in Q1a(i) we need to do 2 search in two binary tree when using bigram approach, but we only need to do 1 search in 1 permuterm index when using permuterm approach. 
+\noindent Advantage 1: Permuterm is more efficient than bigram, for example, in Q1a(i) we need to do 2 search in two binary tree when using bigram approach, but we only need to do 1 search in 1 permuterm index when using permuterm approach.
 
 \noindent Advantage 2: [Need help!]\\
 
@@ -67,7 +67,7 @@
 
 \noindent Answer: The index size bigram is smaller than permuterm.\\
 
-\noindent \textbf{(iii)} Describe the post-processing operations needed to weed out false matches for both bigram and permuterm approaches. 
+\noindent \textbf{(iii)} Describe the post-processing operations needed to weed out false matches for both bigram and permuterm approaches.
 
 \noindent Answer: For bigram, we need to find intersection of terms in all result lists by using merging algorithm. For permuterms, we need to do exhausted filters for query with more than one *.\\
 
@@ -101,7 +101,7 @@ Remove elements of XY from ALL_DATA
 
 \noindent Not in syllabus\\
 
-\noindent \textbf{(ii)} Is each postings list sorted in ascending doc ID order? Justify your answer. 
+\noindent \textbf{(ii)} Is each postings list sorted in ascending doc ID order? Justify your answer.
 
 \noindent Not in syllabus\\
 
@@ -198,9 +198,9 @@ $$\text{SE2, Precision@4}=1/4$$
 \end{tabular}
 \end{center}
 
-\noindent \textbf{(i)} Build a multinomial Naive Bayes classifier with the reviews in the table. You may use words as features. 
+\noindent \textbf{(i)} Build a multinomial Naive Bayes classifier with the reviews in the table. You may use words as features.
 
-\noindent Answer: The number of vocabulary is 19, i.e. \verb|as|, \verb|back|, \verb|but|, \verb|can|, \verb|do|, \verb|expected|, \verb|food|, \verb|go|, \verb|good|, \verb|is|, \verb|long|, \verb|must|, \verb|nice|, \verb|not|, \verb|service|, \verb|to|, \verb|try|, \verb|wait|, \verb|want|. 
+\noindent Answer: The number of vocabulary is 19, i.e. \verb|as|, \verb|back|, \verb|but|, \verb|can|, \verb|do|, \verb|expected|, \verb|food|, \verb|go|, \verb|good|, \verb|is|, \verb|long|, \verb|must|, \verb|nice|, \verb|not|, \verb|service|, \verb|to|, \verb|try|, \verb|wait|, \verb|want|.
 
 $$ P(\text{as} | \text{Postive} ) = \frac{1+ 1}{17 + 19} = \frac{2}{36}$$
 $$ P(\text{back} | \text{Postive} ) = \frac{1+ 1}{17 + 19} = \frac{2}{36}$$
@@ -286,7 +286,7 @@ want     & 0   & 0   & 0   & 0   & 0   & 1   & 1   \\ \hline
 \normalsize
 
 \clearpage
-\noindent We do a normalization without TF-IDF (you can do TF-IDF too). 
+\noindent We do a normalization without TF-IDF (you can do TF-IDF too).
 
 \scriptsize
 \begin{center}
@@ -426,7 +426,7 @@ table[meta=label] {
 \noindent Answer: Hierarchical Agglomerative Clustering is a bottom-up approach. It starts with $N$ clusters, where $N$ is the total number of data. Then, it repeatively merging two closest clusters and update the proximity matrix. The first way to measure cluster similarity is Euclidean distance:
 $$\text{dist}(d1,d2)=\sqrt{\sum_{i=1}^D (d1_{i} - d2_{i})^2}$$
 
-\noindent The second way to measure cluster similarity is Cosine Similarity: 
+\noindent The second way to measure cluster similarity is Cosine Similarity:
 $$\text{cosine}(\vec{d1},\vec{d2}) = \frac{\vec{d1} \cdot \vec{d2}}{|\vec{d1}||\vec{d2}|}$$
 
 \noindent For example, if we have two vector $[1,1]$ and $[2,2]$:
@@ -457,10 +457,10 @@ roundnode/.style={circle, draw=black, thin},
 
 \noindent Answer: Transition matrix
 \begin{center}
-\begin{tabular}{ |l|l|l|l| } 
+\begin{tabular}{ |l|l|l|l| }
     \hline
       & A  & B  & C \\
-    \hline 
+    \hline
     A & 0  & 1  & 1  \\
     B & 0  & 0  & 1  \\
     C & 0  & 1  & 0  \\
@@ -470,10 +470,10 @@ roundnode/.style={circle, draw=black, thin},
 
 \noindent Transition probability matrix
 \begin{center}
-\begin{tabular}{ |l|l|l|l| } 
+\begin{tabular}{ |l|l|l|l| }
     \hline
       & A    & B  & C \\
-    \hline 
+    \hline
     A & 0    & 0.5 & 0.5  \\
     B & 0    & 0   & 1    \\
     C & 0    & 1   & 0    \\
@@ -483,10 +483,10 @@ roundnode/.style={circle, draw=black, thin},
 
 \noindent Transition probability matrix with teleporting
 \begin{center}
-\begin{tabular}{ |l|l|l|l| } 
+\begin{tabular}{ |l|l|l|l| }
     \hline
       & A    & B    & C      \\
-    \hline 
+    \hline
     A & 0.03  & 0.483 & 0.483  \\
     B & 0.03  & 0.03  & 0.933 \\
     C & 0.03  & 0.933 & 0.03  \\
