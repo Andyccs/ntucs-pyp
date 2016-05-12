@@ -5,7 +5,7 @@ before_install:
 - docker pull blang/latex
 - curl -O https://raw.githubusercontent.com/blang/latex-docker/master/dockercmd.sh && chmod +x ./dockercmd.sh
 script:
-- find . -type f | grep "\.tex" | xargs -L 1 ./dockercmd.sh pdflatex -shell-escape -halt-on-error -interaction=nonstopmode 
+- find . -type f | grep "\.tex" | xargs -L 1 ./dockercmd.sh pdflatex -shell-escape -halt-on-error -interaction=nonstopmode
 deploy:
   provider: releases
   api_key:
@@ -16,6 +16,7 @@ deploy:
   - cz4034-12-13-2.pdf
   - cz4034-13-14-2.pdf
   - cz4034-14-15-2.pdf
+  - cz4041-15-16-2.pdf
   skip_cleanup: true
   on:
     repo: Andyccs/ntucs-pyp
