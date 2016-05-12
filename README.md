@@ -43,6 +43,20 @@ Once you have TeX installed, make sure that you can use `pdflatex` command in te
 $ make
 ```
 
+### Build Using Docker
+
+```Shell
+# Only do these for first time
+$ docker pull blang/latex
+$ curl -O https://raw.githubusercontent.com/blang/latex-docker/master/dockercmd.sh && chmod +x ./dockercmd.sh
+
+# Build .tex files one by one
+$ ./dockercmd.sh pdflatex -shell-escape -halt-on-error -interaction=nonstopmode example.tex
+
+# Build all .tex files
+$ find . -type f | grep "\.tex" | xargs -L 1 ./dockercmd.sh pdflatex -shell-escape -halt-on-error -interaction=nonstopmode 
+```
+
 ### Watching Changes
 
 To automatically build the PDF while editing `.tex` file, you need to install watch-cli using `npm` first:

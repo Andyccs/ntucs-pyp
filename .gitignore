@@ -160,3 +160,4 @@ TSWLatexianTemp*
 
 *.pdf
 *.sublime-workspace
+dockercmd.sh
