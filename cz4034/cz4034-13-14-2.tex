@@ -38,32 +38,11 @@
 
 \noindent \textbf{Question 1a} \\
 
-\noindent \textbf{(i)} Define ``Document frequency''
+\noindent \textbf{(i)} Document frequency is number of documents that contain the term. Rare term has low document frequency, and is more informative than frequent terms.\\
 
-\noindent Answer: Document frequency is number of documents that contain the term. Rare term has low document frequency, and is more informative than frequent terms.\\
+\noindent \textbf{(ii)} In boolean retrieval, we retrieve results by performing boolean operation on posting lists. By knowing the document frequency, we can optimise boolean queries by processing AND operation in order of increasing document frequency.\\
 
-\noindent \textbf{(ii)} Explain why an inverted index includes document frequencies.
-
-\noindent Answer: In boolean retrieval, we retrieve results by performing boolean operation on posting lists. By knowing the document frequency, we can optimise boolean queries by processing AND operation in order of increasing document frequency.\\
-
-\noindent \textbf{(iii)} Recommend the most plausible processing order for the Boolean query ``(blue OR sky) AND (red OR apple) AND (yellow OR pages)'', based on the following document frequencies:
-
-\begin{center}
-\begin{tabular}{ | l | l |} 
-    \hline
-    Term  & Document Frequency\\
-    \hline
-    blue  & 32874 \\
-    sky   & 234 \\
-    red   & 25143 \\
-    apple & 324 \\
-    yellow& 64563 \\
-    pages & 463 \\
-    \hline
-\end{tabular}
-\end{center}
-
-\noindent Answer: Maximum number of document for:
+\noindent \textbf{(iii)} Maximum number of document for:
 \begin{itemize}
     \item (blue OR sky) = 33108
     \item (red OR apple) = 25467
@@ -72,14 +51,14 @@
 
 \noindent We do AND operation for (red OR apple) and (blue OR sky) first, then do AND operation for (yellow OR pages)\\
 
-\noindent \textbf{Question 1b} Explain why IR systems typically do not remove stop words from their indexes. 
+\noindent \textbf{Question 1b}
 
-\noindent Answer: By having good compression techniques, the spaces that are required to store stop words are very small. In addition, by having good query optimization techniques, we only need to pay a little performance trade-off to include stop words. Furthermore, we need stop words for phrase query (e.g. King of Denmark) and relational query (e.g. flight to London). \\
+\noindent By having good compression techniques, the spaces that are required to store stop words are very small. In addition, by having good query optimization techniques, we only need to pay a little performance trade-off to include stop words. Furthermore, we need stop words for phrase query (e.g. King of Denmark) and relational query (e.g. flight to London). \\
 
-\noindent \textbf{Question 1c} Compute the edit distance between ``SCE'' and ``CEE'' by using the dynamic programming algorithm of Levenshtein distance. 
+\noindent \textbf{Question 1c}
 
 \begin{center}
-\begin{tabular}{ | l | l  l  l  l  |} 
+\begin{tabular}{ | l | l  l  l  l  |}
     \hline
       &   & C & E & E \\
     \hline
@@ -91,11 +70,11 @@
 \end{tabular}
 \end{center}
 
-\noindent \textbf{Question 1d} Give an instantiation of MapReduce function schema for bi-word index construction. Use an example to illustrate your answer.
+\noindent \textbf{Question 1d}
 
 \noindent Not in syllabus\\
 
-\noindent \textbf{Question 1e} In a large collection of 100,000,000,000 Web pages, you find that there are 5,000 distinct terms in the first 10,000 tokens and 50,000 distinct terms in the first 1,000,000 tokens. If each Web page has 1,000 tokens on average, what is the size of the vocabulary of the index for this collection as predicted by Heap's law?
+\noindent \textbf{Question 1e}
 
 $$M=kT^b$$
 $$5000=k(10000)^b$$
@@ -115,7 +94,7 @@ $$50000=k(1000000)^b$$
 
 \section{Question 2}
 
-\noindent \textbf{Question 2a} Explain the following concepts with examples:\\
+\noindent \textbf{Question 2a}
 
 \noindent \textbf{(i)} Length normalization: A vector can be normalized by dividing each of its components by its length. Dividing a vector by its $L_2$ norm makes it a unit vector. Long and short documents now have comparable weights. Let say we have a document vector $\vec{d} = [1,1,0]$. We normalize the vector by using the following formula:
 
@@ -127,19 +106,18 @@ $$\vec{d}_{\text{norm}} = \frac{\vec{d}}{|\vec{d}|}$$
 
 \noindent \textbf{(iii)} XPath: (not in syllabus) XPath is a syntax for defining parts of an XML document. XPath uses path expressions to navigate in XML documents. \\
 
-\noindent \textbf{Question 2b} Illustrate the dictionary with the following terms, which is compressed by the techniques of dictionary-as-a-string and front coding, where the block size is 4:
+\noindent \textbf{Question 2b}
+
 \begin{center}
 \verb|abcd,abel,able,abolish,|
 \verb|bore,bored,bores,boring|
 \end{center}
 
-\noindent Answer:
-
 \noindent \verb|4abcd4abel4able7abolish4bor*e2|$\diamond$\verb|ed2|$\diamond$\verb|es3|$\diamond$\verb|ing|
 \noindent \verb|a                      b|
 
 \begin{center}
-\begin{tabular}{ | l | l | l |} 
+\begin{tabular}{ | l | l | l |}
     \hline
     Frequency & Posting pointer & Term pointer \\
     \hline
@@ -155,22 +133,21 @@ $$\vec{d}_{\text{norm}} = \frac{\vec{d}}{|\vec{d}|}$$
 \end{tabular}
 \end{center}
 
-\noindent \textbf{Question 2c} Give BOTH Variable Byte codes and Gamma codes for the following numbers: (i) 130 (ii) 45
+\noindent \textbf{Question 2c}
 
 \noindent Not in syllabus\\
 
-\noindent \textbf{Question 2d} Consider the following collection of documents:
+\noindent \textbf{Question 2d}
+
 \begin{center}
 Doc1: \verb|my love love star|\\
 Doc2: \verb|I love star much|\\
 Doc3: \verb|my star is your star|
 \end{center}
 
-\noindent Calculate the cosine similarity between documents in the collection, based on TF-IDF weighting, and select the closest pair.
-
-\noindent Answer: before TF-IDF
+\noindent Before TF-IDF
 \begin{center}
-\begin{tabular}{ | l | l l l |l|} 
+\begin{tabular}{ | l | l l l |l|}
     \hline
     Term   & Doc1 & Doc2 & Doc3 & df \\
     \hline
@@ -187,7 +164,7 @@ Doc3: \verb|my star is your star|
 
 \noindent After TF-IDF:
 \begin{center}
-\begin{tabular}{ | l | l l l |l|} 
+\begin{tabular}{ | l | l l l |l|}
     \hline
     Term   & Doc1 & Doc2 & Doc3 & idf   \\
     \hline
@@ -205,7 +182,7 @@ Doc3: \verb|my star is your star|
 \noindent After normalization:
 \noindent After TF-IDF:
 \begin{center}
-\begin{tabular}{ | l | l l l |l|} 
+\begin{tabular}{ | l | l l l |l|}
     \hline
     Term   & Doc1 & Doc2 & Doc3 \\
     \hline
@@ -230,10 +207,10 @@ $$\text{cosine}(\text{doc2},\text{doc3})=0$$
 
 \section{Question 3}
 
-\noindent \textbf{Question 3a} Consider a categorization task of classifying whether a user's review about a mobile app is informative (YES) or non-informative (NO). Table below shows a training set of 4 user reviews.
+\noindent \textbf{Question 3a}
 
 \begin{center}
-\begin{tabular}{ | l | l |l|} 
+\begin{tabular}{ | l | l |l|}
     \hline
     ID & Words in user review & Informative? \\
     \hline
@@ -245,10 +222,11 @@ $$\text{cosine}(\text{doc2},\text{doc3})=0$$
 \end{tabular}
 \end{center}
 
-\noindent \textbf{(i)} Based on the training set in the table, build a multinomial Naive Bayes classifier to classify the following user review:
+\noindent \textbf{(i)}
+
 \begin{center}\verb|fast cool bugs|\end{center}
 
-\noindent Answer: There are 10 vocabulary:
+\noindent There are 10 vocabulary:
 
 $$P(NO) = \frac{1}{4}$$
 $$P(YES) = \frac{3}{4}$$
@@ -278,15 +256,16 @@ P(\text{NO}|\text{d}) &= \frac{\splitfrac{P(\text{fast}|\text{NO})P(\text{cool}|
 \end{split}
 \end{equation*}
 
-\noindent Since $P(\text{Yes}|\text{d}) > P(\text{NO}|\text{d})$, the user review is classify as informative (YES). 
+\noindent Since $P(\text{Yes}|\text{d}) > P(\text{NO}|\text{d})$, the user review is classify as informative (YES).
 
-\noindent \textbf{(ii)} Use the Rochhio classification algorithm with the training data in the table to classify the following review:
+\noindent \textbf{(ii)}
+
 \begin{center}\verb|cool excellent my favorite|\end{center}
 
-\noindent Answer: transform the table to vector space representation:
+\noindent Transform the table to vector space representation:
 
 \begin{center}
-\begin{tabular}{ | l | l l l l |} 
+\begin{tabular}{ | l | l l l l |}
     \hline
     Term      & id1 & id2 & id3 & id4 \\ \hline
     app       & 1   & 1   & 0   & 1   \\
@@ -303,10 +282,10 @@ P(\text{NO}|\text{d}) &= \frac{\splitfrac{P(\text{fast}|\text{NO})P(\text{cool}|
 \end{tabular}
 \end{center}
 
-\noindent We do a normalization without TF-IDF (you can do TF-IDF too). 
+\noindent We do a normalization without TF-IDF (you can do TF-IDF too).
 
 \begin{center}
-\begin{tabular}{ | l | l l l l |} 
+\begin{tabular}{ | l | l l l l |}
     \hline
     Term      & id1 & id2 & id3 & id4 \\ \hline
     app       & 0.5 & 0.5 & 0   & 0.5 \\
@@ -339,22 +318,22 @@ $$\text{cosine}(\mu_{\text{YES}}, d_{\text{test}}) = 0.255$$
 
 \noindent Since $\text{cosine}(\mu_{\text{NO}}, d_{\text{test}}) > \text{cosine}(\mu_{\text{YES}}, d_{\text{test}})$, we conclude that the review is not informative (NO). \\
 
-\noindent \textbf{Question 3b} Let $|D|$ be the number of documents in training set, $|V|$ be the vocabulary size, and $|C|$ be the number of classes. Give the training time complexity of Naive Bayes algorithm, and indicate which term is expected to dominate the time complexity for most text collection.
+\noindent \textbf{Question 3b}
 
-\noindent Answer: the time complexity is $O(|C||V|+|D|L)$, where $L$ is the average length of documents. The term $|D|$ is expected to dominate the time complexity for most text collections. \\
+\noindent The time complexity is $O(|C||V|+|D|L)$, where $L$ is the average length of documents. The term $|D|$ is expected to dominate the time complexity for most text collections. \\
 
-\noindent \textbf{Question 3c} Briefly compare the bias-variance tradeoff between k-Nearest Neighbors and Naive Bayes algorithms
+\noindent \textbf{Question 3c}
 
-\noindent Answer: kNN has high variance and low bias. NB has low variance and high bias.\\
+\noindent kNN has high variance and low bias. NB has low variance and high bias.\\
 
-\noindent \textbf{Question 3d} In a university, first year students were given choice of studying a language subject of either French or Japanese. The numbers of male and female students choosing each language subject are shown in table below. Use the Chi-Square test at significance level $p=0.05$ (the critical value = 3.84) to test whether the choice of language is independent of sex.
+\noindent \textbf{Question 3d}
 
 \scriptsize
 \begin{center}
-\begin{tabular}{ |l|l|l|l| } 
+\begin{tabular}{ |l|l|l|l| }
     \hline
             & French     & Japanese   & Total \\
-    \hline 
+    \hline
     Male    & $A = 39$   & $B = 16$   & $A+B=55$ \\
     Female  & $C = 21$   & $D = 14$   & $C+D=35$ \\
     Total   & $A+C = 60$ & $B+D = 30$ & $N=90$ \\
@@ -371,11 +350,11 @@ $$\text{cosine}(\mu_{\text{YES}}, d_{\text{test}}) = 0.255$$
 \end{split}
 \end{equation*}
 
-\noindent With 95\% confident, we accept that the choice of language subject is independent of sex. 
+\noindent With 95\% confident, we accept that the choice of language subject is independent of sex.
 
 \section{Question 4}
 
-\noindent \textbf{Question 4a} Consider the 3-means clustering algorithm on a set $S$ consisting of the following 6 points in 2-dimensional space: $A=(0,0)$, $B=(8,0)$, $C=(16,0)$, $D=(0,6)$, $E=(8,6)$, $F=(16,6)$. The algorithm uses Euclidean distance metric to assign each point to its nearest centroidl ties are broken in favor of the centroid to the left/down. Assume that the tree initial centroids are based on data $A$, $C$, $D$, respectively. Perform the above 3-means clustering until it converges, and show the final clustering results.
+\noindent \textbf{Question 4a}
 
 \begin{tikzpicture}
 \begin{axis}[
@@ -399,7 +378,7 @@ table[meta=label] {
 \end{axis}
 \end{tikzpicture}
 
-\noindent Answer: By looking at the plot, we know that point $B$ belongs to $A$, point $E$ belongs to $D$, and point $F$ belongs to $C$. Then, we update the centroids:
+\noindent By looking at the plot, we know that point $B$ belongs to $A$, point $E$ belongs to $D$, and point $F$ belongs to $C$. Then, we update the centroids:
 
 $$\mu_1 = [4,0]$$
 $$\mu_2 = [16,3]$$
@@ -432,11 +411,11 @@ table[meta=label] {
 
 \noindent After the first iteration, $A$ and $B$ in cluster 1, $C$ and D in cluster 2, and $D$ and $F$ in cluster 3. So, it converges.\\
 
-\noindent \textbf{Question 4b} Considering a clustering task with a total of $N$ text documents. Design a clustering scheme which can output any desired number of cluster (1 to N) once the clustering task is completed. Brieftly discuss the time complexity of your clustering scheme. 
+\noindent \textbf{Question 4b}
 
-\noindent Answer: We can use agglomerative or divisive hierarchical clustering. Once the clustering task is completed, we can prune the hierarchical tree to achieve the number of cluster we want. The complexity of the algorithm is $O((N-1)(N^2))$ because we need $O(N^2)$ to update the proximity matrix, and we need to do it for $O(N-1)$ times. So, the complexity is $O(N^3)$.\\
+\noindent We can use agglomerative or divisive hierarchical clustering. Once the clustering task is completed, we can prune the hierarchical tree to achieve the number of cluster we want. The complexity of the algorithm is $O((N-1)(N^2))$ because we need $O(N^2)$ to update the proximity matrix, and we need to do it for $O(N-1)$ times. So, the complexity is $O(N^3)$.\\
 
-\noindent \textbf{Question 4c} Consider a small web with 3 pages A, B, and C, where B links to A and C, while A links to C, and C links to A, as shown in the figure
+\noindent \textbf{Question 4c}
 
 \begin{center}
 \begin{tikzpicture}[
@@ -458,14 +437,12 @@ roundnode/.style={circle, draw=black, thin},
 \end{tikzpicture}
 \end{center}
 
-\noindent \textbf{(i)} Compute the pagerank scores for each of the three pages. Assume that at each step of the pagerank random walk, we teleport to a random page with probability 0.09, with a uniform distribution over which particular page we teleport to
-
-\noindent Answer: Transition matrix
+\noindent \textbf{(i)} Transition matrix
 \begin{center}
-\begin{tabular}{ |l|l|l|l| } 
+\begin{tabular}{ |l|l|l|l| }
     \hline
       & A  & B  & C \\
-    \hline 
+    \hline
     A & 0  & 0  & 1  \\
     B & 1  & 0  & 1  \\
     C & 1  & 0  & 0  \\
@@ -475,10 +452,10 @@ roundnode/.style={circle, draw=black, thin},
 
 \noindent Transition probability matrix
 \begin{center}
-\begin{tabular}{ |l|l|l|l| } 
+\begin{tabular}{ |l|l|l|l| }
     \hline
       & A    & B  & C \\
-    \hline 
+    \hline
     A & 0    & 0  & 1  \\
     B & 0.5  & 0  & 0.5  \\
     C & 1    & 0  & 0  \\
@@ -488,10 +465,10 @@ roundnode/.style={circle, draw=black, thin},
 
 \noindent Transition probability matrix with teleporting
 \begin{center}
-\begin{tabular}{ |l|l|l|l| } 
+\begin{tabular}{ |l|l|l|l| }
     \hline
       & A    & B    & C      \\
-    \hline 
+    \hline
     A & 0.03  & 0.03 & 0.94  \\
     B & 0.485 & 0.03 & 0.485 \\
     C & 0.94  & 0.03 & 0.03  \\
@@ -503,14 +480,12 @@ $$x = [1/3,1/3,1/3]$$
 $$xP = [0.485, 0.03, 0.485]$$
 $$xP^2 = [0.485, 0.03, 0.485]$$
 
-\noindent \textbf{(ii)} Compute the hubs and authorities scores for each of the three pages. In your solution, normalize the scores to ensure that the maximal hub score is 1 and maximal authority score is also 1.
-
-\noindent Answer: first we initialize all hub and authority score to 1
+\noindent \textbf{(ii)} First we initialize all hub and authority scores to 1
 \begin{center}
-\begin{tabular}{ |l|l|l|l| } 
+\begin{tabular}{ |l|l|l|l| }
     \hline
          & A & B & C \\
-    \hline 
+    \hline
     h(d) & 1 & 1 & 1 \\
     a(d) & 1 & 1 & 1 \\
     \hline
@@ -519,10 +494,10 @@ $$xP^2 = [0.485, 0.03, 0.485]$$
 
 \noindent Compute the hub and authority score for each node
 \begin{center}
-\begin{tabular}{ |l|l|l|l| } 
+\begin{tabular}{ |l|l|l|l| }
     \hline
          & A & B & C \\
-    \hline 
+    \hline
     h(d) & 1 & 2 & 1 \\
     a(d) & 2 & 0 & 2 \\
     \hline
@@ -531,10 +506,10 @@ $$xP^2 = [0.485, 0.03, 0.485]$$
 
 \noindent Normalize
 \begin{center}
-\begin{tabular}{ |l|l|l|l| } 
+\begin{tabular}{ |l|l|l|l| }
     \hline
          & A     & B     & C \\
-    \hline 
+    \hline
     h(d) & 0.408 & 0.816 & 0.408 \\
     a(d) & 0.707 & 0     & 0.707 \\
     \hline
@@ -543,31 +518,31 @@ $$xP^2 = [0.485, 0.03, 0.485]$$
 
 \noindent Compute the hub and authority score for each node
 \begin{center}
-\begin{tabular}{ |l|l|l|l| } 
+\begin{tabular}{ |l|l|l|l| }
     \hline
          & A     & B     & C \\
-    \hline 
+    \hline
     h(d) & 0.707 & 1.414 & 0.707 \\
     a(d) & 1.224 & 0     & 1.224 \\
     \hline
 \end{tabular}
-\end{center} 
+\end{center}
 
 \noindent Normalize
 \begin{center}
-\begin{tabular}{ |l|l|l|l| } 
+\begin{tabular}{ |l|l|l|l| }
     \hline
          & A     & B     & C \\
-    \hline 
+    \hline
     h(d) & 0.408 & 0.816 & 0.408 \\
     a(d) & 0.707 & 0     & 0.707 \\
     \hline
 \end{tabular}
-\end{center} 
+\end{center}
 
-\noindent \textbf{Question 4d} Consider a scenario with two Web search engines A and B to estimate the frequency of duplicates on the Web. Each of the web search engines A and B crawls a random subset of the Web of the same size, respectively. Some of the pages crawled will be duplicates - exact textual copies of each other at different URLs. Assume that duplicates are distributed uniformly amongst the pages crawled by A and B. Further, we assume no pages have more than two copies; in other words, we will define a duplicate as a page that has exactly two copies. The search engine A indexes pages without duplicate elimination whereas the search engine B indexes only one copy of each duplicate page. Note that the two random subsets have the same size before duplicate elimination. If 45\% of A's indexed URL are present in B's index, while 50\% of B's indexed URLs are present in A's index, what fraction of Web consists of pages that do not have a duplicate?
+\noindent \textbf{Question 4d}
 
-\noindent Answer: we first find the size of B to A
+\noindent We first find the size of B to A
 $$A\cap B = \frac{45}{100}A = \frac{50}{100}B$$
 $$\frac{B}{A} = \frac{9}{10}$$
 
